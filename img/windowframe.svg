@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, 1, 6.753441, 188.569)">
+    <title>Window Frame</title>
+    <rect x="113.207" y="-104.939" width="253.08" height="207.218" style="stroke-linejoin: round; fill: rgb(245, 245, 245); stroke: rgb(235, 235, 235); stroke-width: 18px;"/>
+    <rect x="104.146" y="-99.371" width="271.088" height="210.802" style="fill: rgb(243, 243, 243); stroke-width: 18px;"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 6.753441, -11.431)">
+    <title>Icons</title>
+    <circle style="fill: rgb(234, 75, 75);" cx="366.027" cy="92.977" r="2.646">
+      <title>Close</title>
+    </circle>
+    <circle style="fill: rgb(243, 223, 36);" cx="356.376" cy="92.977" r="2.646">
+      <title>Maximize</title>
+    </circle>
+    <circle style="fill: rgb(102, 232, 42);" cx="346.513" cy="92.977" r="2.646">
+      <title>Minimize</title>
+    </circle>
+  </g>
+</svg>
