@@ -48,8 +48,8 @@
         </div>
         <div class= 'content'>
           This site was made with minimal PHP (primarily for reusable code), LESS/CSS and JQuery. A large amount of inspiration was taken from <a class='section-projects__link' href='http://seanhalpin.io/'>Sean Halpin</a> during design and creation.<br /><br />
-          <a href='https://github.com/msg138' class='section-projects__link source'><i class='fa fa-github mfa'></i>&nbsp;Source</a>
-          <a href='http://hiveofthoughts.com' class='section-projects__link demo'>Demo</a>
+          <a href='https://github.com/msg138/PortfolioSite' class='section-projects__link source'><i class='fa fa-github mfa'></i>&nbsp;Source</a>
+          <a href='https://themichaelgeorge.com' class='section-projects__link demo'>Demo</a>
         </div>
       </div>
         
