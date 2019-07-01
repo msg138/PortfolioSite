@@ -4,7 +4,7 @@
     <title>Window Frame</title>
     <rect x="113.207" y="-104.939" width="253.08" height="207.218" style="stroke-linejoin: round; fill: rgb(245, 245, 245); stroke: rgb(235, 235, 235); stroke-width: 18px;"/>
     <rect x="104.146" y="-99.371" width="271.088" height="210.802" style="fill: rgb(243, 243, 243); stroke-width: 18px;"/>
-    <image x="104.146" y="-125" width="271.088" height="210.802" href="/img/port-image.png" src="/img/port-image.png" />
+    <image x="104.146" y="-125" width="271.088" height="210.802" href="/img/projects/docker-image.png" src="/img/port-image.png" />
   </g>
   <g transform="matrix(1, 0, 0, 1, 6.753441, -11.431)">
     <title>Icons</title>

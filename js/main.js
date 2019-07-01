@@ -98,5 +98,16 @@ function replaceSubSVG(a_identifier, callback) {
     });
 }
 
-replaceSVG('img.svg', () => {
-});
+replaceSVG('img.svg', () => {});
+
+
+// Function for loading asynchronous artwork.
+$('.section-art__include .placeholder').click(function() {
+    let el = $(this).parent();
+    let loadRef = el.attr('loadref');
+    if(typeof loadRef !== 'undefined') {
+        $.get(loadRef, (data) => {
+            el.find('.placeholder').replaceWith(data);
+        });
+    }
+})

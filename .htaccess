@@ -7,3 +7,4 @@ RewriteRule ^(.*)$ https://themichaelgeorge.com/$1 [R,L]
 
 RewriteRule ^overview$ index.php [R=301,NC,L]
 RewriteRule ^projects$ projects.php [R=301,NC,L]
+RewriteRule ^art$ art.php [R=301,NC,L]

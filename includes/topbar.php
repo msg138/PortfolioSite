@@ -10,6 +10,9 @@
       <a class='links__work' href='/projects'>
         Projects
       </a>
+      <a class='links__art' href='/art'>
+        CSS Art
+      </a>
     </span>
   </div>
 </section>

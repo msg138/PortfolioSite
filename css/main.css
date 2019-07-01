@@ -40,7 +40,8 @@ a {
 }
 .links__home,
 .links__work,
-.section-projects__link {
+.section-projects__link,
+.links__art {
   position: relative;
   float: left;
   margin-right: 25px;
@@ -51,13 +52,15 @@ a {
 }
 .links__home:hover,
 .links__work:hover,
-.section-projects__link:hover {
+.section-projects__link:hover,
+.links__art:hover {
   color: #ffbe5e;
   text-decoration: initial;
 }
 .links__home .fa,
 .links__work .fa,
-.section-projects__link .fa {
+.section-projects__link .fa,
+.links__art .fa {
   position: relative;
   top: 10px;
 }
@@ -108,7 +111,8 @@ a {
   margin-bottom: 120px;
 }
 .section-about,
-.section-projects {
+.section-projects,
+.section-art {
   border-top: 20px solid #ff6e5e;
   box-shadow: 0 -3px 5px #aaaaaa, 0 3px 5px #aaaaaa;
   border-bottom: 20px solid #ff6e5e;
@@ -126,7 +130,9 @@ a {
 .section-about__passions,
 .section-about__aspirations,
 .section-projects__info,
-.section-projects__item {
+.section-projects__item,
+.section-art__info,
+.section-art__item {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 75px;
@@ -135,7 +141,9 @@ a {
 .section-about__passions img.svg,
 .section-about__aspirations img.svg,
 .section-projects__info img.svg,
-.section-projects__item img.svg {
+.section-projects__item img.svg,
+.section-art__info img.svg,
+.section-art__item img.svg {
   position: relative;
   max-width: 100%;
   height: auto;
@@ -145,7 +153,9 @@ a {
 .section-about__passions .content,
 .section-about__aspirations .content,
 .section-projects__info .content,
-.section-projects__item .content {
+.section-projects__item .content,
+.section-art__info .content,
+.section-art__item .content {
   float: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 22px;
@@ -154,7 +164,9 @@ a {
 .section-about__passions .title,
 .section-about__aspirations .title,
 .section-projects__info .title,
-.section-projects__item .title {
+.section-projects__item .title,
+.section-art__info .title,
+.section-art__item .title {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 38px;
   margin-bottom: 5px;
@@ -167,13 +179,27 @@ a {
 .section-about__passions .subtitle,
 .section-about__aspirations .subtitle,
 .section-projects__info .subtitle,
-.section-projects__item .subtitle {
+.section-projects__item .subtitle,
+.section-art__info .subtitle,
+.section-art__item .subtitle {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 26px;
   margin-bottom: 10px;
 }
+.section-art__include {
+  float: none;
+  margin-bottom: 25px;
+  overflow-x: hidden;
+}
+.section-art__include .placeholder {
+  min-height: 100px;
+  min-width: 200px;
+  font-size: 22px;
+  font-family: 'DM Sans', sans-serif;
+}
 .section-skills,
-.section-projects-list {
+.section-projects-list,
+.section-art-list {
   margin-bottom: 75px;
 }
 .section__title {

@@ -25,7 +25,7 @@
     </section>
     <section class='section-projects-list row justify-content-center'>
       <div class='section-projects__item col-12 col-sm-8 col-md-7'>
-        <img class='project-image svg' src='img/windowframe.svg' />
+        <img class='project-image svg' src='img/projects/window-docker.svg' />
         <div class='title'>
             Dickery Docker
         </div>
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class='section-projects__item col-12 col-sm-8 col-md-7'>
-        <img class='project-image svg' src='img/window-portfolio.svg' />
+        <img class='project-image svg' src='img/projects/window-portfolio.svg' />
         <div class='title'>
             Porfolio Site
         </div>
@@ -52,7 +52,6 @@
           <a href='https://themichaelgeorge.com' class='section-projects__link demo'>Demo</a>
         </div>
       </div>
-        
     </section>
     <?php /* Include our contact / footer */ require('includes/footer.php'); ?>
     <?php /* Include necessary scripts for the site to work. */ require('includes/scripts.php'); ?>

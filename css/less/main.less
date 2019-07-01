@@ -79,7 +79,7 @@ a {
     float: right;
 }
 
-.links__home, .links__work, .section-projects__link {
+.links__home, .links__work, .section-projects__link, .links__art {
     position: relative;
     float: left;
     margin-right: 25px;
@@ -152,7 +152,7 @@ a {
     margin-bottom: 120px;
 }
 
-.section-about, .section-projects {
+.section-about, .section-projects, .section-art {
     border-top: 20px solid @color-accent;
     box-shadow: 0 -3px @shadow-blur #aaaaaa, 0 3px @shadow-blur #aaaaaa;
     border-bottom: 20px solid @color-accent;
@@ -169,7 +169,7 @@ a {
     z-index: -1;
 }
 
-.section-about__whoami, .section-about__passions, .section-about__aspirations, .section-projects__info, .section-projects__item {
+.section-about__whoami, .section-about__passions, .section-about__aspirations, .section-projects__info, .section-projects__item, .section-art__info, .section-art__item {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 75px;
@@ -202,7 +202,23 @@ a {
     }
 }
 
-.section-skills, .section-projects-list {
+.section-art__include {
+    float: none;
+    
+    margin-bottom: 25px;
+    
+    overflow-x: hidden;
+    
+    .placeholder {
+        min-height: 100px;
+        min-width: 200px;
+        
+        font-size: @fontsize-medium;
+        font-family: @font-normal2;
+    }
+}
+
+.section-skills, .section-projects-list, .section-art-list {
     margin-bottom: 75px;
 }
 
