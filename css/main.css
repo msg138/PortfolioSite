@@ -197,6 +197,9 @@ a {
   font-size: 22px;
   font-family: 'DM Sans', sans-serif;
 }
+.section-art__include .placeholder:hover {
+  cursor: pointer;
+}
 .section-skills,
 .section-projects-list,
 .section-art-list {
@@ -303,6 +306,39 @@ a {
   animation-iteration-count: infinite;
   animation-delay: 5s;
   animation-fill-mode: forwards;
+}
+.paintbrush-animation {
+  animation-name: animation-paint-brush;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-delay: 5s;
+  animation-timing-function: ease-in-out;
+}
+@keyframes animation-paint-brush {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(45deg);
+  }
+  10% {
+    transform: rotate(20deg);
+  }
+  15% {
+    transform: rotate(45deg);
+  }
+  20% {
+    transform: rotate(20deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 @keyframes animation-send {
   0% {

@@ -215,6 +215,10 @@ a {
         
         font-size: @fontsize-medium;
         font-family: @font-normal2;
+        
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
@@ -345,6 +349,39 @@ a {
     animation-fill-mode: forwards;
 }
 
+.paintbrush-animation {
+    animation-name: animation-paint-brush;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: @animation-delay;
+    animation-timing-function: ease-in-out;
+}
+@keyframes animation-paint-brush {
+    0% {
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(45deg);
+    }
+    10% {
+        transform: rotate(20deg);
+    }
+    15% {
+        transform: rotate(45deg);
+    }
+    20% {
+        transform: rotate(20deg);
+    }
+    25% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 @keyframes animation-send {
     0% {
         top: 0px;

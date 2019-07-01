@@ -105,9 +105,9 @@ replaceSVG('img.svg', () => {});
 $('.section-art__include .placeholder').click(function() {
     let el = $(this).parent();
     let loadRef = el.attr('loadref');
-    if(typeof loadRef !== 'undefined') {
+    if (typeof loadRef !== 'undefined') {
         $.get(loadRef, (data) => {
-            el.find('.placeholder').replaceWith(data);
+            el.find('.placeholder').html(data);
         });
     }
 })
