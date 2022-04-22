@@ -1,0 +1,22 @@
+.root {
+    display: flex;
+    justify-content: center;
+}
+
+.itemContainer {
+    position: relative;
+    width: 100%;
+    margin-top: 100px;
+    max-width: 700px;
+    height: 500px;
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    border: 10px solid green;
+
+    @media (max-width: 400px) {
+        & {
+            margin-top: 50px;
+        }
+    }
+}

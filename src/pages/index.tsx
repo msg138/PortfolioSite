@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react';
 import Menu from '../components/templates/Menu';
+import '../assets/styles/global.scss';
 
-const IndexPage = (): React => {
+const IndexPage = (): ReactElement => {
   return (
     <Menu />
   );
