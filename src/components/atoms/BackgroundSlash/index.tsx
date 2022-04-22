@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import clsx from 'clsx';
 import * as BackgroundSlashCSS from './BackgroundSlash.module.scss';
 
 export type BackgroundSlashColor = 'blue' | 'red' | 'yellow';
@@ -11,56 +12,41 @@ export interface BackgroundSlashProps {
   position?: BackgroundSlashPosition;
 }
 
-const backgroundSlashColorMap: Record<BackgroundSlashColor, [string, string, string]> = {
-  blue: ['#1054B3', '#156CE6', '#1054B3'],
-  red: ['#B31010', '#E61515', '#B31010'],
-  yellow: ['#B39A10', '#E6C615', '#B39A10'],
-};
-
 const backgroundSlashSizeMap: Record<BackgroundSlashSize, [number, number]> = {
-  small: [75, 500],
+  small: [25, 300],
   medium: [150, 720],
   large: [225, 1000],
 };
 
 const BackgroundSlash = (props: BackgroundSlashProps): ReactElement => {
-  const [startColor, middleColor, endColor] = backgroundSlashColorMap[props.color];
-  const [edgeSize, middleSize] = backgroundSlashSizeMap[props.size ?? 'small'];
+  const [edgeSize, centerSize] = backgroundSlashSizeMap[props.size ?? 'small'];
+  const position = props.position ?? 'center';
 
   return (
-    <svg className={BackgroundSlashCSS.root}>
+    <svg className={clsx(BackgroundSlashCSS.root, BackgroundSlashCSS[position])}>
       <rect
-        className={BackgroundSlashCSS.edge}
+        className={clsx(BackgroundSlashCSS.edgePiece, BackgroundSlashCSS[props.color])}
         x="0"
         y="1000"
         width="1500"
         height={edgeSize}
-        style={{
-          fill: startColor,
-        }}
         transform="rotate(-75 0 1000)"
       />
       <rect
-        className={BackgroundSlashCSS.middle}
+        className={clsx(BackgroundSlashCSS.centerPiece, BackgroundSlashCSS[props.color])}
         x={edgeSize}
         y="1000"
         width="1500"
-        height={middleSize}
-        style={{
-          fill: middleColor,
-        }}
+        height={centerSize}
         transform={`rotate(-75 ${edgeSize} 1000)`}
       />
       <rect
-        className={BackgroundSlashCSS.edge}
-        x={edgeSize + middleSize}
+        className={clsx(BackgroundSlashCSS.edgePiece, BackgroundSlashCSS[props.color])}
+        x={edgeSize + centerSize}
         y="1000"
         width="1500"
         height={edgeSize}
-        style={{
-          fill: endColor,
-        }}
-        transform={`rotate(-75 ${edgeSize + middleSize} 1000)`}
+        transform={`rotate(-75 ${edgeSize + centerSize} 1000)`}
       />
     </svg>
   );

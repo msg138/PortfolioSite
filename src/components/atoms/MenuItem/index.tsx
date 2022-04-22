@@ -1,14 +1,17 @@
 import React, { ReactElement, ReactNode } from 'react';
+import { Link } from 'gatsby';
 import * as MenuItemCSS from './MenuItem.module.scss';
 
 export interface MenuItemProps {
     label: string;
+    path: string;
     icon?: ReactNode;
 }
 
 const MenuItem = (props: MenuItemProps): ReactElement => {
     return (
-        <div
+        <Link
+            to={props.path}
             className={MenuItemCSS.root}
         >
             <div className={MenuItemCSS.card}>
@@ -17,7 +20,7 @@ const MenuItem = (props: MenuItemProps): ReactElement => {
             <p className={MenuItemCSS.label}>
                 {props.label}
             </p>
-        </div>
+        </Link>
     );
 };
 

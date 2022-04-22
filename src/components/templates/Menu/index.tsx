@@ -6,27 +6,28 @@ import * as MenuCSS from './Menu.module.scss';
 const menuItems = [
   {
     label: 'About',
+    path: '/about',
   },
   {
     label: 'Projects',
+    path: '/projects',
   },
   {
     label: 'Blog',
+    path: '/blog',
   },
 ];
 
 const Menu = (): ReactElement => {
   return (
-    <>
-      <div className={MenuCSS.root}>
-        <div className={MenuCSS.itemContainer}>
-          <BackgroundSlash color="red" />
-          {menuItems.map((menuItem) => (
-            <MenuItem label={menuItem.label} />
-          ))}
-        </div>
-      </div>
-    </>
+    <div className={MenuCSS.itemContainer}>
+      {menuItems.map((menuItem) => (
+        <MenuItem
+          key={menuItem.label}
+          {...menuItem}
+        />
+      ))}
+    </div>
   );
 };
 

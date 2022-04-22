@@ -2,12 +2,48 @@
   top: 0;
   left: 0;
   position: absolute;
-  width: 100%;
+  width: 700px;
   height: 100%;
-  z-index: -1;
-  background: #F2E6DF;
+  z-index: 0;
+  transition: left 400ms;
+
+  &.left {
+    left: -50%;
+  }
+
+  &.right {
+    left: 50%;
+  }
 }
 
-.edge, .middle {
-  transition: background-color 300ms;
+.edgePiece, .centerPiece {
+  transition: fill 300ms;
+}
+
+.edgePiece {
+  &.blue {
+    fill: #1054B3;
+  }
+
+  &.red {
+    fill: #B31010;
+  }
+
+  &.yellow {
+    fill: #B39A10;
+  }
+}
+
+.centerPiece {
+  &.blue {
+    fill: #156CE6;
+  }
+
+  &.red {
+    fill: #E61515;
+  }
+
+  &.yellow {
+    fill: #E6C615;
+  }
 }

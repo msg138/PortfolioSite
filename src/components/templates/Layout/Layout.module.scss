@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.contentContainer {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  max-width: 100%;
+  margin-top: 100px;
+  padding: 20px;
+  height: 500px;
+  border: 20px solid purple;
+  background: #F2E6DF;
+}
