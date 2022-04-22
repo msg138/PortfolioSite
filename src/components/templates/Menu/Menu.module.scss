@@ -8,4 +8,10 @@
     overflow: visible;
     display: flex;
     flex-wrap: wrap;
+    
+    @media (max-width: 500px) {
+      & {
+        justify-content: center;
+      }
+    }
 }

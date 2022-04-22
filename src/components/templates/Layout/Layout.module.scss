@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-.contentContainer {
+.container {
   overflow: hidden;
   position: relative;
   display: flex;
@@ -13,7 +13,16 @@
   max-width: 100%;
   margin-top: 100px;
   padding: 20px;
-  height: 500px;
-  border: 20px solid purple;
+  min-height: 500px;
+  border: 16px solid black;
+  border-radius: 7px;
   background: #F2E6DF;
+  
+  & > *:not(:nth-child(1)) {
+    z-index: 1;
+  }
+}
+
+.contentContainer {
+  max-width: 100%;
 }

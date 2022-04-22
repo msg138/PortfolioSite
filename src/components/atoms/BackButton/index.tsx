@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import clsx from 'clsx';
 import { Link } from 'gatsby';
+import { IoIosArrowBack } from 'react-icons/io';
 import * as BackButtonCSS from './BackButton.module.scss';
 
 export interface BackButtonProps {
@@ -10,8 +11,15 @@ export interface BackButtonProps {
 
 const BackButton = (props: BackButtonProps): ReactElement => {
   return (
-    <Link className={clsx(BackButtonCSS.root, props.visible && BackButtonCSS.visible)} to={props.to}>
-      Back
+    <Link
+      className={clsx(
+        BackButtonCSS.root,
+        props.visible && BackButtonCSS.visible
+      )}
+      to={props.to}
+      aria-label="Back To Menu"
+    >
+      <IoIosArrowBack />
     </Link>
   );
 };

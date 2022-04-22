@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useMemo } from 'react';
 import clsx from 'clsx';
 import * as BackgroundSlashCSS from './BackgroundSlash.module.scss';
 
@@ -13,40 +13,42 @@ export interface BackgroundSlashProps {
 }
 
 const backgroundSlashSizeMap: Record<BackgroundSlashSize, [number, number]> = {
-  small: [25, 300],
+  small: [50, 500],
   medium: [150, 720],
   large: [225, 1000],
 };
 
+const slashWidth = 700;
+
 const BackgroundSlash = (props: BackgroundSlashProps): ReactElement => {
   const [edgeSize, centerSize] = backgroundSlashSizeMap[props.size ?? 'small'];
   const position = props.position ?? 'center';
+  const startPoint = useMemo(() => {
+    return slashWidth - (2 * edgeSize + centerSize);
+  }, []);
 
   return (
-    <svg className={clsx(BackgroundSlashCSS.root, BackgroundSlashCSS[position])}>
+    <svg className={clsx(BackgroundSlashCSS.root, BackgroundSlashCSS[position])} viewBox="0 0 700 1000">
       <rect
         className={clsx(BackgroundSlashCSS.edgePiece, BackgroundSlashCSS[props.color])}
-        x="0"
-        y="1000"
-        width="1500"
-        height={edgeSize}
-        transform="rotate(-75 0 1000)"
+        x={startPoint}
+        y="0"
+        height="1500"
+        width={edgeSize}
       />
       <rect
         className={clsx(BackgroundSlashCSS.centerPiece, BackgroundSlashCSS[props.color])}
-        x={edgeSize}
-        y="1000"
-        width="1500"
-        height={centerSize}
-        transform={`rotate(-75 ${edgeSize} 1000)`}
+        x={startPoint + edgeSize}
+        y="0"
+        height="1500"
+        width={centerSize}
       />
       <rect
         className={clsx(BackgroundSlashCSS.edgePiece, BackgroundSlashCSS[props.color])}
-        x={edgeSize + centerSize}
-        y="1000"
-        width="1500"
-        height={edgeSize}
-        transform={`rotate(-75 ${edgeSize + centerSize} 1000)`}
+        x={startPoint + edgeSize + centerSize}
+        y="0"
+        height="1500"
+        width={edgeSize}
       />
     </svg>
   );

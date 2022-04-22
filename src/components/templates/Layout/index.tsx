@@ -14,6 +14,8 @@ const backgroundSlashColorMap: Record<string, BackgroundSlashColor> = {
   '/about': 'blue',
   '/projects': 'yellow',
   '/blog': 'red',
+  '/contact': 'yellow',
+  '/skills': 'blue',
 };
 
 const backgroundSlashPositionMap: Record<string, BackgroundSlashPosition> = {
@@ -21,6 +23,8 @@ const backgroundSlashPositionMap: Record<string, BackgroundSlashPosition> = {
   '/about': 'left',
   '/projects': 'right',
   '/blog': 'left',
+  '/contact': 'left',
+  '/skills': 'right',
 };
 
 const Layout = (props: LayoutProps): ReactElement => {
@@ -31,14 +35,14 @@ const Layout = (props: LayoutProps): ReactElement => {
         className={LayoutCSS.root}
       >
         <div
-          className={LayoutCSS.contentContainer}
+          className={LayoutCSS.container}
         >
-          <BackButton visible={location.pathname !== '/'} to="/" />
           <BackgroundSlash 
             color={backgroundSlashColorMap[location.pathname]}
             position={backgroundSlashPositionMap[location.pathname]}
           />
-          {props.children}
+          <BackButton visible={location.pathname !== '/'} to="/" />
+          <span className={LayoutCSS.contentContainer}>{props.children}</span>
         </div>
       </div>
     </>
