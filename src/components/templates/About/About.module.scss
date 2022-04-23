@@ -1,15 +1,24 @@
+@import '../../../assets/styles/colors.scss';
+
 .root {
     width: 600px;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .section {
     width: 50%;
     flex-basis: 50%;
-    min-width: 250px;
+    max-width: 280px;
     box-sizing: border-box;
     padding: 10px;
+
+    @media (max-width: 500px) {
+        width: 100%;
+        flex-basis: 100%;
+    }
 }
 
 .card {
@@ -18,7 +27,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    background-color: white;
+    background-color: $white;
     border-radius: 20px;
 
     & .luckyNumber {
@@ -38,10 +47,11 @@
     align-items: center;
 }
 
+/* Styles relating to rotating coin */
 .coin {
   width: 100px;
   height: 100px;
-  margin: 100px;
+  margin: 0 0 50px;
   animation: rotate 5s linear infinite;
   background: url('https://www.hostwinds.com/images/logos/shld-blue--transparent-md.svg');
   border-radius: 50%;
@@ -84,5 +94,47 @@
   100% {
     filter: brightness(100%);
     transform: rotateY(360deg);
+  }
+}
+
+/* Styles relating to descriptions */
+.item {
+  &Group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+
+  &Name {
+    margin: 0;
+    width: 50%;
+    flex-basis: 50%;
+    background-color: $greyMain;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:nth-of-type(2n + 1) {
+      border-top: 1px solid $greyDark;
+    }
+  }
+
+  &Description {
+    margin: 0;
+    width: 50%;
+    flex-basis: 50%;
+    background-color: $white;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:nth-of-type(2n + 1) {
+      border-top: 1px solid $greyDark;
+    }
   }
 }

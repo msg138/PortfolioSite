@@ -16,13 +16,33 @@ const About = (): ReactElement => {
           className={AboutCSS.coin}
         >
         </div>
-        <div>
-          <div>
-            Printed on
-          </div>
-          <div>
-            11/14/2021 10:49
-          </div>
+        <div className={AboutCSS.itemGroup}>
+          <p className={AboutCSS.itemName}>
+            Favorite Color
+          </p>
+          <p className={AboutCSS.itemDescription}>
+            Red
+          </p>
+        </div>
+        <div className={AboutCSS.itemGroup}>
+          <p className={AboutCSS.itemName}>
+            Favorite Language
+          </p>
+          <p className={AboutCSS.itemDescription}>
+            JavaScript
+          </p>
+          <p className={AboutCSS.itemName}>
+            Favorite Framework
+          </p>
+          <p className={AboutCSS.itemDescription}>
+            React
+          </p>
+          <p className={AboutCSS.itemName}>
+            Favorite Game
+          </p>
+          <p className={AboutCSS.itemDescription}>
+            Pokemon
+          </p>
         </div>
       </div>
     </div>
