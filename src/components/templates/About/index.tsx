@@ -31,19 +31,29 @@ const About = (): ReactElement => {
           <p className={AboutCSS.itemDescription}>
             JavaScript
           </p>
-          <p className={AboutCSS.itemName}>
-            Favorite Framework
-          </p>
-          <p className={AboutCSS.itemDescription}>
-            React
-          </p>
-          <p className={AboutCSS.itemName}>
-            Favorite Game
-          </p>
-          <p className={AboutCSS.itemDescription}>
-            Pokemon
-          </p>
+          <div className={AboutCSS.itemLine}>
+            <p className={AboutCSS.itemName}>
+              Favorite Framework
+            </p>
+            <p className={AboutCSS.itemDescription}>
+              React
+            </p>
+          </div>
+          <div className={AboutCSS.itemLine}>
+            <p className={AboutCSS.itemName}>
+              Favorite Game
+            </p>
+            <p className={AboutCSS.itemDescription}>
+              Pokemon
+            </p>
+          </div>
         </div>
+        <p className={AboutCSS.fullDescription}>
+          Here is a description of me.
+        </p>
+        <p className={AboutCSS.fullDescription}>
+          Here is another description of me.
+        </p>
       </div>
     </div>
   )
