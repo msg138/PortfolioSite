@@ -1,3 +1,5 @@
+@import '../../../assets/styles/colors.scss';
+
 .root {
   top: -330px;
   left: 0;
@@ -28,28 +30,44 @@
 
 .edgePiece {
   &.blue {
-    fill: #1054B3;
+    fill: $blueDark;
   }
 
   &.red {
-    fill: #B31010;
+    fill: $redDark;
   }
 
   &.yellow {
-    fill: #B39A10;
+    fill: $yellowDark;
+  }
+
+  &.purple {
+    fill: $purpleDark;
+  }
+
+  &.green {
+    fill: $greenDark;
   }
 }
 
 .centerPiece {
   &.blue {
-    fill: #156CE6;
+    fill: $blueMain;
   }
 
   &.red {
-    fill: #E61515;
+    fill: $redMain;
   }
 
   &.yellow {
-    fill: #E6C615;
+    fill: $yellowMain;
+  }
+
+  &.purple {
+    fill: $purpleMain;
+  }
+
+  &.green {
+    fill: $greenMain;
   }
 }

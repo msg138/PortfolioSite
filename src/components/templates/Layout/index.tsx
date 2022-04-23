@@ -11,11 +11,11 @@ export interface LayoutProps {
 
 const backgroundSlashColorMap: Record<string, BackgroundSlashColor> = {
   '/': 'red',
-  '/about': 'blue',
-  '/projects': 'yellow',
-  '/blog': 'red',
-  '/contact': 'yellow',
-  '/skills': 'blue',
+  '/about': 'red',
+  '/projects': 'blue',
+  '/blog': 'purple',
+  '/contact': 'green',
+  '/skills': 'yellow',
 };
 
 const backgroundSlashPositionMap: Record<string, BackgroundSlashPosition> = {

@@ -2,7 +2,7 @@ import React, { ReactElement, useMemo } from 'react';
 import clsx from 'clsx';
 import * as BackgroundSlashCSS from './BackgroundSlash.module.scss';
 
-export type BackgroundSlashColor = 'blue' | 'red' | 'yellow';
+export type BackgroundSlashColor = 'blue' | 'red' | 'yellow' | 'green' | 'purple';
 export type BackgroundSlashSize = 'small' | 'medium' | 'large';
 export type BackgroundSlashPosition = 'left' | 'right' | 'center';
 

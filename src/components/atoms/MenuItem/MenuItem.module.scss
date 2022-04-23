@@ -1,3 +1,5 @@
+@import '../../../assets/styles/colors.scss';
+
 .root {
     display: flex;
     flex-direction: column;
@@ -37,23 +39,23 @@
     }
 
     &.red {
-      color: red;
+      color: $redDark;
     }
 
     &.blue {
-      color: blue;
+      color: $blueDark;
     }
 
     &.green {
-      color: green;
+      color: $greenDark;
     }
 
     &.yellow {
-      color: yellow;
+      color: $yellowDark;
     }
 
     &.purple {
-      color: purple;
+      color: $purpleDark;
     }
 
     @media (max-width: 500px) {
