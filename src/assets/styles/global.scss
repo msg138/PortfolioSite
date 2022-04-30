@@ -1,5 +1,8 @@
+@import './colors.scss';
+
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 75px 0 0;
     font-family: 'Mukta', sans-serif;
+    background: $blueLight;
 }

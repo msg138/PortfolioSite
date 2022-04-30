@@ -1,0 +1,21 @@
+.root {
+  position: relative;
+
+  &.area {
+    &a {
+      grid-area: a;
+    }
+
+    &b {
+      grid-area: b;
+    }
+
+    &c {
+      grid-area: c;
+    }
+
+    &d {
+      grid-area: d;
+    }
+  }
+}

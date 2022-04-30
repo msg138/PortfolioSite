@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
-import Menu from '../components/templates/Menu';
+import Home from '../components/templates/Home';
 import '../assets/styles/global.scss';
 
 const IndexPage = (): ReactElement => {
@@ -9,7 +9,7 @@ const IndexPage = (): ReactElement => {
       <Helmet>
         <title>Michael George - Frontend Engineer</title>
       </Helmet>
-      <Menu />
+      <Home />
     </>
   );
 }

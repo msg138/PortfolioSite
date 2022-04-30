@@ -1,0 +1,20 @@
+.root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    width: 1200px;
+    max-width: 100%;
+}
+
+.grid {
+    &1 {
+        display: grid;
+        grid-gap: 16px;
+        grid-template: "a a b b"
+                        "c c b b"
+                        "d d d d" / 1fr 1fr 1fr;
+    }
+}
