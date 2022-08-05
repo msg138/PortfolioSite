@@ -4,6 +4,7 @@ import * as IntroductionSectionCSS from './IntroductionSection.module.scss';
 import Section from "../../general/Section";
 import GridItem from "../../general/GridItem";
 import Typography from "../../general/Typography";
+import FunShape from "../../general/FunShape";
 
 export interface IntroductionSectionProps {
 
@@ -12,6 +13,9 @@ export interface IntroductionSectionProps {
 const IntroductionSection = (props: IntroductionSectionProps): ReactElement => {
     return (
         <Section grid={1}>
+            <div className={IntroductionSectionCSS.shapeContainer1}>
+                <FunShape type={'diamond'} />
+            </div>
             <GridItem area="a">
                 <Typography variant="h2">The name's <Typography variant="inline" emphasized>Michael George</Typography></Typography>
                 <Typography emphasized>
@@ -28,7 +32,7 @@ const IntroductionSection = (props: IntroductionSectionProps): ReactElement => {
                 />
             </GridItem>
             <GridItem area="c">
-                
+
             </GridItem>
         </Section>
     );
