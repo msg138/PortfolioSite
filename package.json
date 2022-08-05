@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "yarn run clean && gatsby develop -H 0.0.0.0",
     "build": "yarn run clean && gatsby build",
-    "serve": "gatsby serve -p 80",
+    "serve": "gatsby serve -p 80 -H 0.0.0.0",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },
