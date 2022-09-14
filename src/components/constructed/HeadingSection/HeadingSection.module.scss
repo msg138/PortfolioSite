@@ -1,0 +1,59 @@
+@import '../../../assets/styles/spacing';
+
+.title {
+  text-align: center;
+  margin: 0 0 $margin8;
+  max-width: 700px;
+
+  &Container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.shapeContainer1 {
+  position: absolute;
+  left: 50px;
+
+  & > div:nth-of-type(1) {
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+
+  & > div:nth-of-type(2) {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+  }
+
+  & > div:nth-of-type(3) {
+    position: absolute;
+    top: 30px;
+    left: 140px;
+  }
+}
+
+.shapeContainer2 {
+  position: absolute;
+  right: 50px;
+
+  & > div:nth-of-type(1) {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  & > div:nth-of-type(2) {
+    position: absolute;
+    top: 90px;
+    right: 60px;
+  }
+
+  & > div:nth-of-type(3) {
+    position: absolute;
+    top: 30px;
+    right: 140px;
+  }
+}

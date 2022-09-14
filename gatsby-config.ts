@@ -13,7 +13,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /image/,
+          include: /image.*\.svg$/,
         },
       },
     },

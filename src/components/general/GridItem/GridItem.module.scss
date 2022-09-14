@@ -1,6 +1,10 @@
 .root {
   position: relative;
 
+  & img {
+    max-width: 100%;
+  }
+
   &.area {
     &a {
       grid-area: a;

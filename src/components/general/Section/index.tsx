@@ -5,7 +5,7 @@ import * as SectionCSS from './Section.module.scss';
 export interface SectionProps {
     children: ReactNode;
     // Different Pre defined grid layouts.
-    grid?: 1 | 2;
+    grid?: 1 | 2 | 3;
 }
 
 const Section = (props: SectionProps): ReactElement => {

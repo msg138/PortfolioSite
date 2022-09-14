@@ -9,6 +9,7 @@ export interface TypographyProps {
     className?: string;
     variant?: TypographyVariant;
     emphasized?: boolean;
+    center?: boolean;
 }
 
 const variantComponentMap: Record<TypographyVariant, ElementType> = {
@@ -29,6 +30,7 @@ const Typography = (props: TypographyProps): ReactElement => {
                 TypographyCSS.root,
                 TypographyCSS[variant],
                 props.emphasized && TypographyCSS.emphasized,
+                props.center && TypographyCSS.center,
                 props.className,
             )}
         >

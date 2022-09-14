@@ -1,4 +1,10 @@
-.shapeContainer1 {
-  position: absolute;
-  left: -100px;
+@import '../../../assets/styles/colors';
+
+.image {
+  box-shadow: inset 0 -10px 10px -110px $white;
+}
+
+.link {
+  color: rgb(185, 76, 44);
+  text-decoration: none;
 }

@@ -1,11 +1,17 @@
 import React, { ReactElement } from 'react';
-import TagLineSection from "../../constructed/TagLineSection";
+import HeadingSection from "../../constructed/HeadingSection";
 import IntroductionSection from "../../constructed/IntroductionSection";
+import ProjectSection from "../../constructed/ProjectSection";
+import hostwindsMarketingImage from '../../../assets/images/hostwinds-marketing.png';
+import InfoSection from "../../constructed/InfoSection";
 
 const Home = (): ReactElement => {
   return (
     <>
-        <TagLineSection />
+        <HeadingSection
+            title="I help engineer elegantly performant frontend interface solutions."
+            titleVariant="h1"
+        />
         <IntroductionSection />
     </>
   );
