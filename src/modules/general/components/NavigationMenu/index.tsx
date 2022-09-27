@@ -10,17 +10,17 @@ const NavigationMenu = () => {
         <nav className={clsx(CommonCSS.card, NavigationMenuCSS.root)}>
             <ul className={NavigationMenuCSS.itemList}>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/">
+                    <a href="/" aria-label="Home">
                         <BiHome />
                     </a>
                 </li>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/projects">
+                    <a href="/projects" aria-label="Projects">
                         <BiCodeBlock />
                     </a>
                 </li>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/blog">
+                    <a href="/blog" aria-label="Blog">
                         <BiCommentDetail />
                     </a>
                 </li>
