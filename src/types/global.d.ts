@@ -1,7 +1,4 @@
-declare module '*.scss' {
-    const content: Record<string | number | symbol, string>;
-    export default content;
-}
+declare module '*.scss';
 
 declare module '*.png' {
     const content: string;
