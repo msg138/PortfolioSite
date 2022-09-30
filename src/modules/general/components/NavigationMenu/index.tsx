@@ -3,25 +3,35 @@ import clsx from 'clsx';
 import { BiHome, BiCodeBlock, BiCommentDetail } from "react-icons/bi";
 import * as CommonCSS from '../../../../assets/styles/common.module.scss';
 import * as NavigationMenuCSS from './NavigationMenu.module.scss';
+import {Link} from "gatsby";
 
 const NavigationMenu = () => {
     return (
         <nav className={clsx(CommonCSS.card, NavigationMenuCSS.root)}>
             <ul className={NavigationMenuCSS.itemList}>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/" aria-label="Home">
+                    <Link
+                        to={'/'}
+                        aria-label="Home"
+                    >
                         <BiHome />
-                    </a>
+                    </Link>
                 </li>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/projects" aria-label="Projects">
+                    <Link
+                        to={'/projects'}
+                        aria-label="Projects"
+                    >
                         <BiCodeBlock />
-                    </a>
+                    </Link>
                 </li>
                 <li className={NavigationMenuCSS.item}>
-                    <a href="/blog" aria-label="Blog">
+                    <Link
+                        to={'/blog'}
+                        aria-label="Blog"
+                    >
                         <BiCommentDetail />
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

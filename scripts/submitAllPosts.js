@@ -2,6 +2,10 @@ const { MongoClient } = require('mongodb');
 const fs = require('fs');
 const path = require('path');
 
+require('dotenv').config({
+    path: path.resolve(__dirname, '../.env'),
+});
+
 const constructPost = (filename) => {
     const contents = fs.readFileSync(filename, 'utf8');
     const lines = contents.split('\n');
@@ -21,6 +25,8 @@ const constructPost = (filename) => {
         author,
         category,
         content: postContent,
+        createdAt: Date.now(),
+        smiles: 0,
     };
 };
 
@@ -28,6 +34,7 @@ async function main() {
     const uri = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}:27017/admin?retryWrites=true&w=majority`;
     const client = new MongoClient(uri);
 
+    console.log('Connecting');
     try {
         await client.connect();
     } catch (e) {
@@ -37,18 +44,42 @@ async function main() {
     const db = client.db('site');
     const collection = db.collection('posts');
 
-    const files = fs.readdirSync(path.join(__dirname, './posts'));
+    if (process.argv[2] === 'clean') {
+        const deleteResult = await collection.deleteMany({});
+        console.log('Deleted => ', deleteResult);
+        // Default action is to read posts and submit.
+    } else {
+        console.log('Reading files...');
+        const files = fs.readdirSync(path.resolve(__dirname, './posts'));
 
-    files.forEach((file) => {
-        const basename = path.basename(file);
-        if (basename.startsWith('.')) {
-            return;
+        for (const file of files) {
+            const filename = `${path.resolve(__dirname, './posts')}/${file}`;
+            console.log('Adding post', file);
+            const basename = path.basename(file);
+            if (basename.startsWith('.')) {
+                console.log('Skippping');
+                continue;
+            }
+
+            const post = constructPost(filename);
+            const existingPost = await collection.findOne({ slug: post.slug });
+
+            if (existingPost) {
+                console.log('Found post: ', existingPost);
+                delete post.smiles;
+                delete post.createdAt;
+                const result = await collection.updateOne({ slug: post.slug }, {
+                    $set: {
+                        ...post,
+                        updatedAt: Date.now(),
+                    },
+                });
+            } else {
+                const result = await collection.insertOne(post);
+                console.log('Inserted post => ', result);
+            }
         }
-
-        collection.insertOne(constructPost(file)).then((result) => {
-            console.log('Inserted post => ', result);
-        });
-    });
+    }
 
     await client.close();
 }

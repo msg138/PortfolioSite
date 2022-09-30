@@ -5,7 +5,7 @@ import '../assets/styles/global.scss';
 import profileImage from '../assets/images/me.png';
 import Post from "../modules/general/components/Post";
 
-const IndexPage = ({ data }): ReactElement => {
+const ProjectsPage = ({ data }): ReactElement => {
     const posts = data.allMongodbSitePosts.edges.map(({ node }) => ({
         id: node.id,
         slug: node.slug,
@@ -22,7 +22,7 @@ const IndexPage = ({ data }): ReactElement => {
     return (
         <>
             <Helmet>
-                <title>Michael George - Frontend Engineer</title>
+                <title>Projects | Michael George - Frontend Engineer</title>
             </Helmet>
             {posts.map((post) => (
                 <Post key={post.id} {...post} />
@@ -31,11 +31,11 @@ const IndexPage = ({ data }): ReactElement => {
     );
 }
 
-export default IndexPage
+export default ProjectsPage
 
 export const query = graphql`
-query HomePosts {
-  allMongodbSitePosts(filter: {category: {eq: "home"}}) {
+query ProjectPosts {
+  allMongodbSitePosts(filter: {category: {eq: "projects"}}) {
     edges {
       node {
         content
