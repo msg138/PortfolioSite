@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { BiHome, BiCodeBlock, BiCommentDetail } from "react-icons/bi";
 import * as CommonCSS from '../../../../assets/styles/common.module.scss';
 import * as NavigationMenuCSS from './NavigationMenu.module.scss';
-import Search from "../Search";
 
 const NavigationMenu = () => {
     return (
@@ -25,7 +24,6 @@ const NavigationMenu = () => {
                     </a>
                 </li>
             </ul>
-            <Search />
         </nav>
     );
 };

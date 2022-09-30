@@ -1,5 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config({
+  path: '.env',
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `The Michael George`,
@@ -15,6 +19,14 @@ const config: GatsbyConfig = {
         rule: {
           include: /image.*\.svg$/,
         },
+      },
+    },
+    {
+      resolve: "gatsby-source-mongodb",
+      options: {
+        dbName: 'site',
+        connectionString: `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}:27017/admin?retryWrites=true&w=majority`,
+        collection: ['posts'],
       },
     },
   ],
