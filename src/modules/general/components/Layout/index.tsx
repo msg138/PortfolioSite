@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import * as LayoutCSS from './Layout.module.scss';
-import Sidebar from "../Sidebar";
-import NavigationMenu from "../NavigationMenu";
+import {PageContextProvider} from "../../../../context/pageContext";
+import PageGroupContainer from "../PageGroupContainer";
 
 export interface LayoutProps {
     children: ReactNode;
@@ -9,17 +9,15 @@ export interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
     return (
-        <div className={LayoutCSS.root}>
-            <div className={LayoutCSS.container}>
-               <div className={LayoutCSS.sidebarContainer}>
-                   <Sidebar />
-               </div>
-                <div className={LayoutCSS.contentContainer}>
-                    <NavigationMenu />
-                    {props.children}
+        <PageContextProvider>
+            <div className={LayoutCSS.root}>
+                <div className={LayoutCSS.container}>
+                    <PageGroupContainer>
+                        {props.children}
+                    </PageGroupContainer>
                 </div>
             </div>
-        </div>
+        </PageContextProvider>
     );
 };
 
