@@ -5,5 +5,5 @@
 
 eval cat $(cat ../.env) docker run --rm -it \
   -p 1337:1337 \
-  -v $(STRAPI_DIR):/srv/app \
+  -v $($STRAPI_DIR):/srv/app \
   strapi/strapi
