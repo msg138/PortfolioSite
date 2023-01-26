@@ -1,0 +1,44 @@
+@import '../../../../assets/styles/colors';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+.content {
+  font-size: 18px;
+  margin: 0;
+}
+
+.socialContainer {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  width: 100%;
+
+  & a {
+    color: $primaryMain;
+    text-decoration: none;
+
+    &:not(:nth-last-of-type(1)) {
+      margin-right: 10px;
+    }
+  }
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}

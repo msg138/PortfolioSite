@@ -9,3 +9,13 @@
   max-width: 100%;
   display: flex;
 }
+
+.sidebarContainer {
+  width: calc(30% - 10px);
+  margin-right: 10px;
+}
+
+.contentContainer {
+  width: calc(70% - 10px);
+  margin-left: 10px;
+}
