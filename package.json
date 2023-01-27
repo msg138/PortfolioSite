@@ -27,6 +27,7 @@
     "gatsby-plugin-sass": "^5.12.1",
     "gatsby-plugin-sitemap": "^5.12.1",
     "gatsby-source-mongodb": "^4.24.0",
+    "gatsby-source-strapi": "1.0.3",
     "mongodb": "^4.10.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

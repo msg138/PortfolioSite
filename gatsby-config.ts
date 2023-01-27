@@ -22,11 +22,15 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: "gatsby-source-mongodb",
+      resolve: 'gatsby-source-strapi',
       options: {
-        dbName: 'site',
-        connectionString: `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}:27017/admin?retryWrites=true&w=majority`,
-        collection: ['posts'],
+        apiURL: process.env.STRAPI_API_URL,
+        queryLimit: 1000,
+        collectionTypes: ['Posts'],
+        loginData: {
+          identifier: process.env.STRAPI_USER,
+          password: process.env.STRAPI_PASS,
+        },
       },
     },
   ],
