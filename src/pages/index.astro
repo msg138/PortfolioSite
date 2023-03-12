@@ -1,0 +1,44 @@
+---
+import Layout from '../components/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import Divider from '../components/Divider.astro';
+import Projects from '../projects/index.astro';
+import PostCarousel from '../components/PostCarousel.astro';
+import SEO from '../components/SEO.astro';
+---
+<Layout
+	title="Michael George - Frontend Engineer"
+>
+	<SEO
+		slot="head"
+		openGraph={{
+			title: 'Michael George - Frontend Engineer',
+			description: 'Seattle, Washington based Frontend Engineer with an eye for performance and accessibility.',
+		}}
+	/>
+	<Header />
+	<Divider title="About Myself" />
+	<Section
+		content={[
+			'I am a Frontend Engineer based in Seattle, Washington. My primary focus is on frontend performance and accessibility. In my free time, you can find me enjoying various styles of music, walking around town or working on a personal project.',
+			'Currently I am employed at Hostwinds, since 2017.',
+		]}
+	/>
+	<Divider
+		title="Projects"
+	/>
+	<Projects />
+	<Divider id="posts" title="My Posts" />
+	<PostCarousel />
+	<Divider
+		title="Looking For Me?"
+	/>
+	<Section>
+		<p>
+			Email me at <a href="mailto:anything@themichaelgeorge.com" target="_blank">anything@themichaelgeorge.com</a>.
+		</p>
+	</Section>
+	<Footer />
+</Layout>

@@ -1,0 +1,36 @@
+---
+
+const { title, content, className, id } = Astro.props;
+---
+<section id={id} class={className ? `root ${className}` : 'root'}>
+    {title && (
+        <h2>
+            {title}
+        </h2>
+    )}
+    {content && (Array.isArray(content) ? (
+        content.map((contentMessage) => (
+            <p>
+                {contentMessage}
+            </p>
+        ))
+    ) : (
+        <p>
+            {content}
+        </p>
+    ))}
+    <slot />
+</section>
+<style>
+    section {
+        margin: 0;
+    }
+
+    section:not(:nth-last-of-type(1)) {
+        margin-bottom: 40px;
+    }
+
+    p:not(:nth-last-of-type(1)) {
+        margin-bottom: 20px;
+    }
+</style>

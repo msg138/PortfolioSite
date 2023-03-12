@@ -1,0 +1,115 @@
+---
+
+export interface ProjectInterface {
+    title: string;
+    date: string;
+    company: string;
+    image: {
+        source: string;
+        alt: string;
+    };
+    description: string;
+    livePreviewURL?: string;
+}
+
+const { project }: { project: ProjectInterface } = Astro.props;
+---
+<div class="card">
+    <h3 class="card__title">
+        {project.title}
+    </h3>
+    <b class="card__subtitle">
+        {`${project.company} - ${project.date}`}
+    </b>
+    <img
+        class="card__img"
+        loading="lazy"
+        src={project.image.source}
+        alt={project.image.alt}
+    />
+    {Array.isArray(project.description) ? (
+        project.description.map((description) => (
+            <p class="card__description">
+                {description}
+            </p>
+        ))
+    ) : (
+        <p class="card__description">
+            {project.description}
+        </p>
+    )}
+    {project.livePreviewURL && <a href={project.livePreviewURL} target="_blank" rel="noreferrer nofollow">Live Preview</a>}
+</div>
+<style>
+    .card {
+        border: 3px solid black;
+        border-radius: 5px;
+        padding: 20px;
+        width: calc(33% - 20px);
+        margin: 0 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;;
+        box-shadow: 2px 3px 3px rgba(0,0,0,0.1);
+        transition: transform 300ms, box-shadow 300ms;
+        transform: translateY(0);
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 2px 6px 4px rgba(0,0,0,0.1);
+    }
+
+    .card__img {
+        width: 100%;
+        border: 2px solid black;
+        margin: 0 0 10px;
+    }
+
+    .card__title {
+        margin: 0 0 5px;
+        font-size: 2rem;
+    }
+
+    .card__subtitle {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+    }
+
+    .card__description {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .card__description:not(:nth-last-of-type(1)) {
+        margin-top: 10px;
+    }
+
+    @media (max-width: 1200px) {
+        .card {
+            width: calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .card {
+            width: calc(100% - 20px);
+        }
+
+        .card__title {
+            font-size: 2.5rem;
+        }
+
+        .card__subtitle {
+            font-size: 2rem;
+        }
+
+        .card__description {
+            font-size: 1.5rem;
+        }
+
+        .card__description:not(:nth-last-of-type(1)) {
+            margin-top: 20px;
+        }
+    }
+</style>

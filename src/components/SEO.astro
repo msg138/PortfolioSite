@@ -1,0 +1,13 @@
+---
+const { openGraph } = Astro.props;
+---
+<>
+    {openGraph?.title && <meta property="og:title" content={openGraph.title} />}
+    {openGraph?.description && (
+        <meta property="og:description" content={openGraph.description} />
+        <meta name="description" content={openGraph.description} />
+    )}
+    {openGraph?.image ? <meta property="og:image" content={openGraph.image} /> : (
+        <meta property="og:image" content="/images/me.svg" />
+    )}
+</>

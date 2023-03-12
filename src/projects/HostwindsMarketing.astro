@@ -1,0 +1,19 @@
+---
+import Project from '../components/ProjectCard.astro';
+---
+<Project
+    project={{
+        title: 'Marketing Site',
+        date: 'June 2021',
+        company: 'Hostwinds',
+        image: {
+            source: '/images/hostwinds-marketing.png',
+            alt: 'Hostwinds Marketing site preview',
+        },
+        description: [
+            'This project involved recreating the Hostwinds Marketing Site with new designs from the in-house design team, and fleshing out the build process that takes place to build the localized versions of each page including the Strapi-backed Community Portal pages.',
+            'We erected intensive performance testing in order to help with our SEO on Google. This involved setting up our CI CD to automate testing our lighthouse scores and seeking to resolve problems that came as a result of using NextJS for the application framework.',
+        ],
+        livePreviewURL: 'https://www.hostwinds.com/',
+    }}
+/>
