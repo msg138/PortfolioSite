@@ -2,7 +2,7 @@
 title: 'My First Post'
 slug: 'first-post'
 createdAt: 2023-03-12 PST
-description: "First post on my site."
+description: "First post on my site, detailing the process of creating my portfolio site, my Developer Journey, and my expectations for the site as well as myself."
 author: "Michael George"
 ---
 

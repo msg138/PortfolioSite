@@ -6,8 +6,18 @@ import Section from '../components/Section.astro';
 import Divider from '../components/Divider.astro';
 import Projects from '../projects/index.astro';
 import PostCarousel from '../components/PostCarousel.astro';
+import SEO from '../components/SEO.astro';
 ---
-<Layout title="Michael George - Frontend Engineer">
+<Layout
+	title="Michael George - Frontend Engineer"
+>
+	<SEO
+		slot="head"
+		openGraph={{
+			title: 'Michael George - Frontend Engineer',
+			description: 'Seattle, Washington based Frontend Engineer with an eye for performance and accessibility.',
+		}}
+	/>
 	<Header />
 	<Divider title="About Myself" />
 	<Section

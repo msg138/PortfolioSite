@@ -2,6 +2,8 @@
 import Layout from "../../components/Layout.astro";
 import Section from '../../components/Section.astro';
 import Header from '../../components/Header.astro';
+import SEO from '../../components/SEO.astro';
+
 export async function getStaticPaths()  {
     const posts = await Astro.glob('../../posts/**/*.md');
 
@@ -19,7 +21,16 @@ export async function getStaticPaths()  {
 
 const { post: { frontmatter, Content } } = Astro.props;
 ---
-<Layout title={`${frontmatter.title} - Michael George`}>
+<Layout
+    title={`${frontmatter.title} - Michael George`}
+>
+    <SEO
+        slot="head"
+        openGraph={{
+            title: `${frontmatter.title} - Michael George`,
+            description: frontmatter.description,
+        }}
+    />
     <Header noTitleElement={true} />
     <Section>
         <a href="/#posts" class="backLink">Back to Posts</a>
