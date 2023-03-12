@@ -1,0 +1,76 @@
+---
+import Layout from '../components/Layout.astro';
+import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
+import Divider from '../components/Divider.astro';
+import Projects from '../projects/index.astro';
+---
+<Layout title="Michael George - Frontend Engineer">
+	<Header />
+	<Divider id="first-divider" title="About Myself" />
+	<Section
+		content={[
+			'I am a Frontend Engineer based in Seattle, Washington. My primary focus is on frontend performance and accessibility. In my free time, you can find me enjoying various styles of music, walking around town or working on a personal project.',
+			'Currently I am employed at Hostwinds, since 2017.',
+		]}
+	/>
+	<Divider
+		title="Projects"
+	/>
+	<Projects />
+	<Divider
+		title="Looking For Me?"
+	/>
+	<Section>
+		<p>
+			Email me at <a href="mailto:anything@themichaelgeorge.com" target="_blank">anything@themichaelgeorge.com</a>.
+		</p>
+	</Section>
+</Layout>
+<style is:global>
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		width: 1200px;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 500;
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 3rem;
+		font-weight: 500;
+		margin: 0;
+		width: 100%;
+		text-align: center;
+	}
+
+	p {
+		font-size: 2.5rem;
+		font-weight: 400;
+		margin: 0;
+	}
+
+	a {
+		color: lightcoral;
+	}
+
+	a:hover {
+		color: darkred;
+	}
+
+	@media (max-width: 1200px) {
+		main {
+			width: 900px;
+		}
+	}
+
+	@media (max-width: 900px) {
+		main {
+			width: 600px;
+		}
+	}
+</style>

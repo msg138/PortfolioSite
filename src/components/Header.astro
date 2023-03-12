@@ -1,0 +1,187 @@
+---
+---
+
+<div class="header" id="header">
+    <a
+        class="header__img"
+        href="#top"
+    >
+        <img
+            src="/images/me.svg"
+            alt="Artistic rendition of myself."
+        />
+    </a>
+    <h1 class="header__label">
+        <span class="header__label__name">
+            Michael George
+        </span>
+        <span class="header__label__position">
+            Frontend Engineer
+        </span>
+    </h1>
+</div>
+<style>
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;;
+        width: 100%;
+        position: relative;
+        margin: 0 0 40px;
+    }
+
+    .header--sticky {
+        position: fixed;
+        top: 0;
+        margin: auto;
+        z-index: 4;
+        transition: top 300ms;
+    }
+
+    .header--sticky .header__img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .header::after {
+        content: '';
+        width: 100%;
+        height: 4px;
+        background: black;
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 0;
+        border-radius: 2px;
+    }
+
+    .header__img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 7px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: lightcoral;
+        z-index: 2;
+        transition: width 300ms, height 300ms;
+    }
+
+    .header__img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header__label {
+        position: absolute;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        font-size: 2rem;
+        clip-path: polygon(0 -100%, 50% -100%, 50% 100%, 100% 100%, 100% 0, 0 0);
+    }
+
+    .header__label__name, .header__label__position {
+        position: relative;
+        transition: top 300ms;
+        transition-delay: 400ms;
+        top: 0;
+    }
+
+    .header__label__name {
+        top: -2.5rem;
+    }
+
+    .header--sticky .header__label__name {
+        top: 0;
+    }
+
+    .header--sticky .header__label__position {
+        top: -2.5rem;
+    }
+
+    @media (max-width: 1200px) {
+        .header--sticky {
+            width: 900px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .header__img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .header__label {
+            font-size: 1.2rem;
+        }
+
+        .header__label__name {
+            top: -1.7rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .header--sticky {
+            width: 600px;
+        }
+    }
+</style>
+<script>
+    const headerMargin = 40;
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+    let headerHeight = 0;
+    let isHeaderFixed = false;
+
+    function handleHeaderLock(scrollPos) {
+        if (isHeaderFixed && scrollPos < headerHeight / 2) {
+            const headerElement = document.getElementById('header');
+            if (headerElement) {
+                headerElement.className = headerElement.className.replace(/ ?header--sticky/, '');
+                headerElement.style.minHeight = `${headerHeight}px`;
+                document.body.removeChild(document.getElementById('header-placeholder'));
+                isHeaderFixed = false;
+            }
+        } else if (!isHeaderFixed) {
+            const headerElement = document.getElementById('header');
+            if (headerElement) {
+                const computedHeight = headerElement.getBoundingClientRect().height;
+                headerHeight = computedHeight;
+                if (scrollPos > headerHeight) {
+                    isHeaderFixed = true;
+                    headerElement.style.top = `-${computedHeight + 20}px`;
+                    headerElement.style.minHeight = null;
+                    headerElement.className = `${headerElement.className} header--sticky`;
+                    const placeholderElement = document.createElement('div');
+                    placeholderElement.style.height = `${computedHeight + headerMargin}px`;
+                    placeholderElement.style.margin = headerElement.style.margin;
+                    placeholderElement.id = 'header-placeholder';
+                    document.body.prepend(placeholderElement);
+                    setTimeout(() => {
+                        headerElement.style.top = null;
+                    }, 100);
+                }
+            }
+        }
+    }
+
+    document.addEventListener("scroll", (event) => {
+        lastKnownScrollPosition = window.scrollY;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleHeaderLock(lastKnownScrollPosition);
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+
+    // Perform initial check, in case user starts lower in page
+    handleHeaderLock(window.scrollY);
+</script>

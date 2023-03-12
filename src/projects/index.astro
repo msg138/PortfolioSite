@@ -1,0 +1,15 @@
+---
+import Section from '../components/Section.astro';
+import HostwindsMarketing from './HostwindsMarketing.astro';
+import CurrentWorkProject from './CurrentWorkProject.astro';
+---
+<Section className="container">
+    <CurrentWorkProject />
+    <HostwindsMarketing />
+</Section>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
