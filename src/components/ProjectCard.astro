@@ -23,6 +23,7 @@ const { project }: { project: ProjectInterface } = Astro.props;
     </b>
     <img
         class="card__img"
+        loading="lazy"
         src={project.image.source}
         alt={project.image.alt}
     />
