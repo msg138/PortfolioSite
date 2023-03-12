@@ -1,4 +1,5 @@
 ---
+const { noTitleElement } = Astro.props;
 ---
 
 <div class="header" id="header">
@@ -11,14 +12,25 @@
             alt="Artistic rendition of myself."
         />
     </a>
-    <h1 class="header__label">
-        <span class="header__label__name">
-            Michael George
-        </span>
-        <span class="header__label__position">
-            Frontend Engineer
-        </span>
-    </h1>
+    {noTitleElement ? (
+        <p class="header__label">
+            <span class="header__label__name">
+                Michael George
+            </span>
+            <span class="header__label__position">
+                Frontend Engineer
+            </span>
+        </p>
+    ) : (
+        <h1 class="header__label">
+            <span class="header__label__name">
+                Michael George
+            </span>
+            <span class="header__label__position">
+                Frontend Engineer
+            </span>
+        </h1>
+    )}
 </div>
 <style>
     .header {
@@ -170,7 +182,7 @@
         }
     }
 
-    document.addEventListener("scroll", (event) => {
+    document.addEventListener("scroll", () => {
         lastKnownScrollPosition = window.scrollY;
 
         if (!ticking) {

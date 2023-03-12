@@ -1,0 +1,19 @@
+---
+import Section from "./Section.astro";
+import PostCard from './PostCard.astro';
+
+const posts = await Astro.glob('../posts/**/*.md');
+---
+<Section className="container" id="">
+    {posts.map((post) => (
+        <PostCard
+            post={post.frontmatter}
+        />
+    ))}
+</Section>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>

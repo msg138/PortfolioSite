@@ -1,8 +1,8 @@
 ---
 
-const { title, content, className } = Astro.props;
+const { title, content, className, id } = Astro.props;
 ---
-<section class={className ? `root ${className}` : 'root'}>
+<section id={id} class={className ? `root ${className}` : 'root'}>
     {title && (
         <h2>
             {title}
