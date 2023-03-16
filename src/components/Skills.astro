@@ -1,0 +1,57 @@
+---
+const skills = [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Cross Browser Testing',
+    'Astro',
+    'NextJS',
+    'Strapi',
+    'Node.js',
+    'Material UI',
+    'Storybook',
+    'Git Version Control',
+    'Gitlab CI CD',
+];
+---
+<ul>
+    {skills.map((skill) => (
+        <li>
+            {skill}
+        </li>
+    ))}
+</ul>
+<style>
+    ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        font-size: 2rem;
+        width: 33%;
+        text-align: center;
+        margin: 0;
+    }
+
+    @media (max-width: 1200px) {
+        li {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        li {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        li {
+            width: 100%;
+        }
+    }
+</style>
