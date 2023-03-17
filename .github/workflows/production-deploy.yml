@@ -8,4 +8,4 @@ jobs:
   deploy-prod:
     runs-on: self-hosted
     steps:
-      - run: /bin/bash /home/github/PortfolioSite/scripts/build.sh
+      - run: /bin/bash scripts/build.sh
