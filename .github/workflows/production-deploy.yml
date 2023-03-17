@@ -1,0 +1,11 @@
+name: Production Deployment
+run-name: Deploying to production...
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy-prod:
+    runs-on: self-hosted
+    steps:
+      - run: /bin/bash /home/github/PortfolioSite/scripts/build.sh
