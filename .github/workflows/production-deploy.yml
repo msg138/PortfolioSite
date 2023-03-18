@@ -8,4 +8,6 @@ jobs:
   deploy-prod:
     runs-on: self-hosted
     steps:
-      - run: /bin/bash scripts/build.sh
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: /bin/bash ./scripts/build.sh
