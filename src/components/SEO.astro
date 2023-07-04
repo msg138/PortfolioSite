@@ -1,4 +1,5 @@
 ---
+import meImage from '../assets/images/me.svg';
 const { openGraph } = Astro.props;
 ---
 <>
@@ -8,6 +9,6 @@ const { openGraph } = Astro.props;
         <meta name="description" content={openGraph.description} />
     )}
     {openGraph?.image ? <meta property="og:image" content={openGraph.image} /> : (
-        <meta property="og:image" content="/images/me.svg" />
+        <meta property="og:image" content={meImage} />
     )}
 </>

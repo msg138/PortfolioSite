@@ -1,5 +1,6 @@
 ---
 import Project from '../components/ProjectCard.astro';
+import projectImage from '../assets/images/unknown.svg';
 ---
 <Project
         project={{
@@ -7,7 +8,7 @@ import Project from '../components/ProjectCard.astro';
             date: 'WIP',
             company: 'Hostwinds',
             image: {
-                source: '/images/unknown.svg',
+                source: projectImage,
                 alt: 'Indeterminate image as project cannot be shown.',
             },
             description: [

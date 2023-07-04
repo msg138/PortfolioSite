@@ -1,4 +1,5 @@
 ---
+import meImage from '../assets/images/me.svg';
 const { noTitleElement } = Astro.props;
 ---
 
@@ -8,7 +9,7 @@ const { noTitleElement } = Astro.props;
         href="#top"
     >
         <img
-            src="/images/me.svg"
+            src={meImage}
             alt="Artistic rendition of myself."
         />
     </a>
