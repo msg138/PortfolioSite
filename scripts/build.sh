@@ -4,5 +4,5 @@
 git fetch --all
 git pull
 
-yarn install
+yarn install --frozen-lockfile
 yarn run build
