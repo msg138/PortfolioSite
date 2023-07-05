@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev --host 0.0.0.0",
-    "build": "astro build",
+    "build": "yarn run build:site && yarn run build:pdf",
+    "build:site": "astro build",
+    "build:pdf": "node ./src/utility/build-tools/generateResumePDF.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "astro-compress": "^1.1.49",
-    "astro-compressor": "^0.4.0"
+    "astro-compressor": "^0.4.0",
+    "puppeteer": "^20.7.4"
   }
 }
