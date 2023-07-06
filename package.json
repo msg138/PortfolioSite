@@ -6,15 +6,19 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev --host 0.0.0.0",
-    "build": "astro build",
-    "preview": "astro preview",
+    "build": "yarn run build:site && yarn run build:resume",
+    "build:site": "astro build",
+    "build:resume": "node ./src/utility/build-tools/generateResumePDF.js",
+    "preview": "astro preview --port 9098",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.0.18"
+    "astro": "^2.0.18",
+    "wait-port": "^1.0.4"
   },
   "devDependencies": {
     "astro-compress": "^1.1.49",
-    "astro-compressor": "^0.4.0"
+    "astro-compressor": "^0.4.0",
+    "puppeteer": "^20.7.4"
   }
 }
