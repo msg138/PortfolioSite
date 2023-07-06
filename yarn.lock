@@ -1177,6 +1177,11 @@ commander@^7.2.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
+commander@^9.3.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.5.0.tgz#bc08d1eb5cedf7ccb797a96199d41c7bc3e60d30"
+  integrity sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==
+
 common-ancestor-path@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/common-ancestor-path/-/common-ancestor-path-1.0.1.tgz#4f7d2d1394d91b7abdf51871c62f71eadb0182a7"
@@ -4021,6 +4026,15 @@ vscode-uri@^3.0.3, vscode-uri@^3.0.7:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.0.7.tgz#6d19fef387ee6b46c479e5fb00870e15e58c1eb8"
   integrity sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==
+
+wait-port@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/wait-port/-/wait-port-1.0.4.tgz#6f9474645ddbf7701ac100ab6762438edf6e5689"
+  integrity sha512-w8Ftna3h6XSFWWc2JC5gZEgp64nz8bnaTp5cvzbJSZ53j+omktWTDdwXxEF0jM8YveviLgFWvNGrSvRHnkyHyw==
+  dependencies:
+    chalk "^4.1.2"
+    commander "^9.3.0"
+    debug "^4.3.4"
 
 wcwidth@^1.0.1:
   version "1.0.1"

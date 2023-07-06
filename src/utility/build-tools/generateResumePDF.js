@@ -8,16 +8,30 @@
 import puppeteer from "puppeteer";
 import fs from 'fs';
 import path from 'path';
+import child_process from "child_process";
+import waitPort from "wait-port";
 
+const downloadPort = 9098;
 const downloadProtocol = 'http';
-const downloadDomain = '127.0.0.1:8080';
+const downloadDomain = `127.0.0.1:${downloadPort}`;
 const downloadPath = '/resume';
 
+const pdfGenerationDestinationFolder = path.resolve('./dist/downloads');
+const pdfGenerationDestinationFile = `${pdfGenerationDestinationFolder}/resume.pdf`;
+
 async function generateResumePDF() {
-    const browser = await puppeteer.launch({ headless: false });
+    console.log('Starting preview');
+    const serverProcess = child_process.spawn('npm', ['run', 'preview']);
+    await waitPort({
+        host: '127.0.0.1',
+        port: downloadPort,
+        protocol: 'http',
+    });
+    console.log('Taking pdf');
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    await page.setViewport({width: 1400, height: 1600 });
+    // await page.setViewport({width: 1400, height: 1600 });
     await page.goto(`${downloadProtocol}://${downloadDomain}${downloadPath}`);
 
     // Get the pdf size.
@@ -27,15 +41,25 @@ async function generateResumePDF() {
 
     await page.waitForNetworkIdle();
 
-    await page.emulateMediaType('screen');
-    fs.writeFileSync('tmppdf.pdf', await page.pdf({
-        // format: 'A4',
-        width: '1400px',
-        height: `${height + 500}px`,
+    if (!fs.existsSync(pdfGenerationDestinationFolder)) {
+        fs.mkdirSync(pdfGenerationDestinationFolder);
+    }
+
+    fs.writeFileSync(pdfGenerationDestinationFile, await page.pdf({
+        format: 'A3',
         preferCSSPageSize: true,
+        margin: {
+            top: '1in',
+            right: '1in',
+            bottom: '1in',
+            left: '1in',
+        }
     }));
 
+    console.log('Closing all');
     await browser.close();
+    serverProcess.kill('SIGINT');
+    console.log('FIN');
 }
 
 generateResumePDF().then(() => process.exit(0)).catch(console.error);
