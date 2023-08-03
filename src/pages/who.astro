@@ -17,5 +17,6 @@ import PersonalDescription from "../components/PersonalDescription.astro";---
     }
     window.setTimeout(() => {
         window.history.replaceState(null, null, '/me')
+        window.document.title = 'Mikey.is/me';
     }, 6500)
 </script>
