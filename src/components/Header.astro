@@ -1,201 +1,260 @@
 ---
-import meImage from '../assets/images/me.svg';
-const { noTitleElement } = Astro.props;
----
+export interface Props {
+    pathPieces: Array<string>;
+    shouldAnimate?: boolean;
+}
 
-<div class="header" id="header">
-    <a
-        class="header__img"
-        href="#top"
-    >
-        <img
-            src={meImage}
-            alt="Artistic rendition of myself."
-        />
-    </a>
-    {noTitleElement ? (
-        <p class="header__label">
-            <span class="header__label__name">
-                Michael George
-            </span>
-            <span class="header__label__position">
-                Frontend Engineer
-            </span>
-        </p>
-    ) : (
-        <h1 class="header__label">
-            <span class="header__label__name">
-                Michael George
-            </span>
-            <span class="header__label__position">
-                Frontend Engineer
-            </span>
-        </h1>
-    )}
-</div>
+const { pathPieces, shouldAnimate } = Astro.props;
+const descriptorFocus = pathPieces[0] ?? 'me';
+const descriptors = [
+    {
+        name: 'who?',
+        path: '',
+    }, ...[
+    {
+        name: 'a-developer',
+        path: 'a-developer',
+    },
+    {
+        name: 'a-blogger',
+        path: 'a-blogger',
+    },
+    {
+        name: 'a-gamer',
+        path: 'a-gamer',
+    },
+    {
+        name: 'me',
+        path: 'me',
+    },
+].sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)];
+---
+<>
+    <div class="overlay">
+    </div>
+<header class={`header${shouldAnimate ? '' : ' static'}`} id="header">
+    <p class="title">
+        <a
+                class="main"
+                href="/"
+        >
+            mikey.is/
+        </a>
+        <span class="descriptors">
+            {descriptors.map((descriptor) => (
+                <span class={`descriptor${descriptor.path === descriptorFocus ? ' active' : ''}`}>
+                    {descriptor.name}
+                </span>
+            ))}
+        </span>
+    </p>
+    <svg onclick="" class="menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Menu</title><path fill-rule="evenodd" d="M4 8c-.55 0-1-.45-1-1s.45-1 1-1h16c.55 0 1 .45 1 1s-.45 1-1 1H4Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Z"></path><metadata>app, application, components, hamburger, interface, line, lines, menu, screen, site, ui, ux, web, website</metadata></svg>
+</header>
+</>
 <style>
+    @keyframes returnTitle {
+        0% {
+            top: 40vh;
+            left: 50%;
+            font-size: 4rem;
+        }
+
+        100% {
+            top: 0;
+            left: 0;
+            font-size: 1.5rem;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            top: 0;
+        }
+
+        100% {
+            opacity: 0;
+            top: -20px;
+        }
+    }
+
+    @keyframes introduction {
+        0% {
+            left: -200px;
+        }
+
+        100% {
+            left: 0;
+        }
+    }
+
+    @keyframes descriptor-intro {
+        0% {
+            opacity: 0;
+            top: 100%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 0;
+        }
+    }
+
+    @keyframes overlayFade {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .overlay {
+        width: 100vw;
+        position: fixed;
+        height: 100vw;
+        display: block;
+        background: white;
+        opacity: 1;
+        z-index: 2;
+        pointer-events: all;
+        animation: overlayFade 500ms 6200ms;
+        animation-fill-mode: forwards;
+    }
+
     .header {
         display: flex;
-        justify-content: center;
-        align-items: center;;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
+        max-width: 1200px;
         position: relative;
         margin: 0 0 40px;
+        z-index: 3;
     }
 
-    .header--sticky {
-        position: fixed;
-        top: 0;
-        margin: auto;
-        z-index: 4;
-        transition: top 300ms;
-        width: 1200px;
-    }
-
-    .header--sticky .header__img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .header::after {
-        content: '';
-        width: 100%;
-        height: 4px;
-        background: black;
-        position: absolute;
-        top: calc(50% - 2px);
-        left: 0;
-        border-radius: 2px;
-    }
-
-    .header__img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 7px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #A31449;
-        z-index: 2;
-        transition: width 300ms, height 300ms;
-    }
-
-    .header__img img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .header__label {
-        position: absolute;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        top: 50%;
-        left: 0;
-        font-size: 2rem;
-        clip-path: polygon(0 -100%, 50% -100%, 50% 100%, 100% 100%, 100% 0, 0 0);
-    }
-
-    .header__label__name, .header__label__position {
+    .title {
+        left: 50%;
+        top: 40vh;
         position: relative;
-        transition: top 300ms;
-        transition-delay: 400ms;
+        animation: returnTitle 1500ms 5000ms;
+        animation-fill-mode: forwards;
+        display: flex;
+        font-size: 4rem;
+    }
+
+    .title > span {
+        background: white;
+    }
+
+
+    .main {
+        position: relative;
+        background: white;
+        z-index: 3;
+        color: black;
+        text-decoration: none;
+    }
+
+    .descriptors {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: -200px;
         top: 0;
+        white-space: nowrap;
+        animation: introduction 1000ms 1000ms;
+        animation-fill-mode: forwards;
     }
 
-    .header__label__name {
-        top: -2.5rem;
+    .descriptor {
+        opacity: 0;
+        position: absolute;
     }
 
-    .header--sticky .header__label__name {
-        top: 0;
+    .descriptor:nth-of-type(1) {
+        opacity: 1;
+        animation: fadeOut 300ms 2400ms;
+        animation-fill-mode: forwards;
+        color: #828e00;
     }
 
-    .header--sticky .header__label__position {
-        top: -2.5rem;
+    .descriptor:nth-of-type(2) {
+        animation: descriptor-intro 300ms 2500ms, fadeOut 300ms 3000ms;
+        animation-fill-mode: forwards;
+        color: #02841e;
     }
 
-    @media (max-width: 1200px) {
-        .header--sticky {
-            width: 900px;
-        }
+    .descriptor:nth-of-type(3) {
+        animation: descriptor-intro 300ms 3100ms, fadeOut 300ms 3600ms;
+        animation-fill-mode: forwards;
+        color: #026a84;
     }
 
-    @media (max-width: 900px) {
-        .header__img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .header__label {
-            font-size: 1.2rem;
-        }
-
-        .header__label__name {
-            top: -1.7rem;
-        }
+    .descriptor:nth-of-type(4) {
+        animation: descriptor-intro 300ms 3700ms, fadeOut 300ms 4200ms;
+        animation-fill-mode: forwards;
+        color: #026a84;
     }
 
-    @media (max-width: 900px) {
-        .header--sticky {
-            width: 600px;
-        }
+    .descriptor:nth-last-of-type(1) {
+        animation: descriptor-intro 300ms 4300ms;
+        animation-fill-mode: forwards;
+        color: #730284;
+    }
+
+    .header.static .title {
+        animation: none;
+        top: 20px;
+        font-size: 1.5rem;
+    }
+
+    .header.static .descriptor {
+        animation: none;
+    }
+
+    .header.static .descriptor:nth-of-type(1) {
+        opacity: 0;
+    }
+
+    .header.static .descriptor.active {
+        opacity: 1;
+    }
+
+    .header.static .descriptors {
+        animation: none;
+        left: 0;
+    }
+
+    .menu {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        opacity: 0;
+        animation: fadeIn 300ms 6000ms;
+        animation-fill-mode: forwards;
+    }
+
+    .header.static .menu {
+        opacity: 1;
+        animation: none;
+    }
+
+    p a::before {
+        display: none;
     }
 </style>
 <script>
-    const headerMargin = 40;
-    let lastKnownScrollPosition = 0;
-    let ticking = false;
-    let headerHeight = 0;
-    let isHeaderFixed = false;
 
-    function handleHeaderLock(scrollPos) {
-        if (isHeaderFixed && scrollPos < headerHeight / 2) {
-            const headerElement = document.getElementById('header');
-            if (headerElement) {
-                headerElement.className = headerElement.className.replace(/ ?header--sticky/, '');
-                headerElement.style.minHeight = `${headerHeight}px`;
-                document.body.removeChild(document.getElementById('header-placeholder'));
-                isHeaderFixed = false;
-            }
-        } else if (!isHeaderFixed) {
-            const headerElement = document.getElementById('header');
-            if (headerElement) {
-                const computedHeight = headerElement.getBoundingClientRect().height;
-                headerHeight = computedHeight;
-                if (scrollPos > headerHeight) {
-                    isHeaderFixed = true;
-                    headerElement.style.top = `-${computedHeight + 20}px`;
-                    headerElement.style.minHeight = null;
-                    headerElement.className = `${headerElement.className} header--sticky`;
-                    const placeholderElement = document.createElement('div');
-                    placeholderElement.style.height = `${computedHeight + headerMargin}px`;
-                    placeholderElement.style.margin = headerElement.style.margin;
-                    placeholderElement.id = 'header-placeholder';
-                    document.body.prepend(placeholderElement);
-                    setTimeout(() => {
-                        headerElement.style.top = null;
-                    }, 100);
-                }
-            }
-        }
-    }
-
-    document.addEventListener("scroll", () => {
-        lastKnownScrollPosition = window.scrollY;
-
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleHeaderLock(lastKnownScrollPosition);
-                ticking = false;
-            });
-
-            ticking = true;
-        }
-    });
-
-    // Perform initial check, in case user starts lower in page
-    handleHeaderLock(window.scrollY);
 </script>

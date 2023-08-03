@@ -1,135 +1,30 @@
 ---
-import Layout from "../components/Layout.astro";---
+import Layout from "../components/Layout.astro";
+import Header from "../components/Header.astro";---
 <Layout
     title="Mikey.is/who?"
 >
-    <h1 class="title">
-        <span class="main">
-            mikey.is/
-        </span>
-        <span class="first">
-            who?
-        </span>
-        <span class="descriptors">
-            <span class="descriptor">
-                a-developer
-            </span>
-            <span class="descriptor">
-                a-blogger
-            </span>
-            <span class="descriptor">
-                a-gamer
-            </span>
-            <span class="descriptor">
-                me
-            </span>
-        </span>
-    </h1>
+    <Header
+            shouldAnimate={true}
+            pathPieces={[
+                'me'
+            ]}
+    />
+    <p>
+        Hey there, I'm a <a href="/a-developer">frontend engineer</a> based in the beautiful city of Seattle. My passion lies in building performant web applications and creating awesome user experiences.
+    </p>
+    <p>
+        You can find some of the projects I have produced on my <a href="https://github.com/msg138">GitHub Profile</a>.
+        When I'm not coding or working on projects, I love spending time with my family—. We enjoy exploring the beautiful surroundings of Seattle together. And when I need some me-time, you can find me playing <a href="/a-gamer">video games</a>, belting out tunes at karaoke nights, savoring delicious sushi, and cheering for UFC and F1 events.
+    </p>
+    <p>
+        Feel free to <a href="/reachable">connect with me</a> on social media or drop me a line if you're ever in Seattle! Let's geek out about frontend and technology together.
+    </p>
 </Layout>
 <style>
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeOut {
-        0% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 0;
-        }
-    }
-
-    @keyframes introduction {
-        0% {
-            left: 0;
-        }
-
-        100% {
-            left: 300px;
-        }
-    }
-
-    @keyframes descriptor-intro {
-        0% {
-            opacity: 0;
-            top: 100%;
-        }
-
-        100% {
-            opacity: 1;
-            top: 0;
-        }
-    }
-
-    .title {
-        position: fixed;
-        left: calc(50% - 200px);
-        top: calc(50% - 40px);
-    }
-
-    .title > span {
-        background: white;
-    }
-
-
-    .main {
-        position: relative;
-        background: white;
-        z-index: 3;
-    }
-
-    .first {
-        position: absolute;
-        left: 0;
-        z-index: 1;
-        animation: introduction 1000ms 1000ms, fadeOut 300ms 2300ms;
-        animation-fill-mode: forwards;
-    }
-
-    .descriptors {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        left: 300px;
-        top: 0;
-        white-space: nowrap;
-    }
-
-    .descriptor {
-        opacity: 0;
-        position: absolute;
-    }
-
-    .descriptor:nth-of-type(1) {
-        animation: descriptor-intro 300ms 2500ms, fadeOut 300ms 3000ms;
-        animation-fill-mode: forwards;
-        color: #828e00;
-    }
-
-    .descriptor:nth-of-type(2) {
-        animation: descriptor-intro 300ms 3100ms, fadeOut 300ms 3600ms;
-        animation-fill-mode: forwards;
-        color: #02841e;
-    }
-
-    .descriptor:nth-of-type(3) {
-        animation: descriptor-intro 300ms 3700ms, fadeOut 300ms 4200ms;
-        animation-fill-mode: forwards;
-        color: #026a84;
-    }
-
-    .descriptor:nth-last-of-type(1) {
-        animation: descriptor-intro 300ms 4300ms;
-        animation-fill-mode: forwards;
-        color: #730284;
-    }
 </style>
+<script>
+    if (window.location.href[window.location.href.length - 1] !== '?') {
+        window.history.pushState(null, null, '/who?')
+    }
+</script>
