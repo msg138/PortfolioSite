@@ -149,9 +149,11 @@ const descriptors = [
     }
 
     .overlay {
-        width: 100vw;
         position: fixed;
-        height: 100vw;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
         display: block;
         background: white;
         opacity: 1;
@@ -196,6 +198,15 @@ const descriptors = [
         background: white;
     }
 
+    @keyframes mainBackgroundRemover {
+        0% {
+            background: white;
+        }
+
+        100% {
+            background: rgba(1, 1, 1, 0);
+        }
+    }
 
     .main {
         position: relative;
@@ -203,6 +214,8 @@ const descriptors = [
         z-index: 3;
         color: black;
         text-decoration: none;
+        animation: mainBackgroundRemover 300ms 2000ms;
+        animation-fill-mode: forwards;
     }
 
     .descriptors {
@@ -338,6 +351,62 @@ const descriptors = [
     .header.static .menuicon {
         opacity: 1;
         animation: none;
+    }
+
+    @media (max-width: 1000px) {
+        @keyframes introductionMobile {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 50px;
+            }
+        }
+
+        @keyframes introductionReturn {
+            0% {
+                left: -125px;
+                top: 50px;
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+            }
+        }
+
+        @keyframes returnTitleMobile {
+            0% {
+                top: 40vh;
+                left: 50%;
+                transform: translate(-75%, 0);
+                font-size: 2.5rem;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+                transform: translate(0, 0);
+                font-size: 1.5rem;
+            }
+        }
+
+        .title {
+            font-size: 2.5rem;
+            animation: returnTitleMobile 1500ms 5000ms;
+            animation-fill-mode: forwards;
+        }
+
+        .header.static .title {
+            font-size: 1.5rem;
+        }
+
+        .header:not(.static) .descriptors {
+            left: -125px;
+            animation: introductionMobile 1000ms 1000ms, introductionReturn 1000ms 5000ms;
+            animation-fill-mode: forwards;
+        }
     }
 </style>
 <script>
