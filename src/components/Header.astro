@@ -410,5 +410,36 @@ const descriptors = [
     }
 </style>
 <script>
+    const visitedStorageKey = 'hasBeenHere';
+    function getLastTimeVisited() {
+        const lastBeenHere = window.localStorage.getItem(visitedStorageKey) as number | null;
+        try {
+            if (!lastBeenHere) {
+                return null;
+            }
+            const lastBeenHereNumber = Number(lastBeenHere);
+            if (Number.isNaN(lastBeenHereNumber)) {
+                return null;
+            }
+            return lastBeenHereNumber;
+        } catch (_) {
+            return null;
+        }
+    }
 
+    function setLastTimeVisitedToNow() {
+        window.localStorage.setItem(visitedStorageKey, String(Date.now()));
+    }
+
+    function animateIfNew() {
+        const lastTimeHere = getLastTimeVisited();
+        if (!lastTimeHere) {
+            setLastTimeVisitedToNow();
+            const staticElements = Array.from(document.querySelectorAll('.static'));
+            staticElements.forEach((staticElement) => {
+                staticElement.classList.remove('static');
+            });
+        }
+    }
+    animateIfNew();
 </script>
