@@ -14,22 +14,27 @@ const descriptors = [
     {
         name: 'who?',
         path: '',
+        color: '#828e00',
     }, ...[
     {
         name: 'a-developer',
         path: 'a-developer',
+        color: '#185eb9',
     },
     {
         name: 'a-blogger',
         path: 'a-blogger',
+        color: '#02841e',
     },
     {
         name: 'a-gamer',
         path: 'a-gamer',
+        color: '#8f0030',
     },
     {
         name: 'me',
         path: 'me',
+        color: '#730284',
     },
 ].sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)];
 ---
@@ -46,13 +51,30 @@ const descriptors = [
         </a>
         <span class="descriptors">
             {descriptors.map((descriptor) => (
-                <span class={`descriptor${descriptor.path === descriptorFocus ? ' active' : ''}`}>
+                <span
+                        class={`descriptor${descriptor.path === descriptorFocus ? ' active' : ''}`}
+                        style={`color: ${descriptor.color}`}
+                >
                     {descriptor.name}
                 </span>
             ))}
         </span>
     </p>
-    <svg onclick="" class="menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Menu</title><path fill-rule="evenodd" d="M4 8c-.55 0-1-.45-1-1s.45-1 1-1h16c.55 0 1 .45 1 1s-.45 1-1 1H4Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Z"></path><metadata>app, application, components, hamburger, interface, line, lines, menu, screen, site, ui, ux, web, website</metadata></svg>
+    <input type="checkbox" id="menutoggle">
+    <label for="menutoggle">
+        <svg aria-label="Toggle menu links" class="menuicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Menu</title><path fill-rule="evenodd" d="M4 8c-.55 0-1-.45-1-1s.45-1 1-1h16c.55 0 1 .45 1 1s-.45 1-1 1H4Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Z"></path><metadata>app, application, components, hamburger, interface, line, lines, menu, screen, site, ui, ux, web, website</metadata></svg>
+    </label>
+    <nav class="menulist">
+        <ul>
+            {descriptors.filter((descriptor) => descriptor.path !== '').map((descriptor) => (
+                <li
+                        style={`color: ${descriptor.color}`}
+                >
+                    <a href={`/${descriptor.path}`}>{descriptor.name}</a>
+                </li>
+            ))}
+        </ul>
+    </nav>
 </header>
 </>
 <style>
@@ -60,12 +82,14 @@ const descriptors = [
         0% {
             top: 40vh;
             left: 50%;
+            transform: translate(-75%, 0);
             font-size: 4rem;
         }
 
         100% {
             top: 0;
             left: 0;
+            transform: translate(0, 0);
             font-size: 1.5rem;
         }
     }
@@ -147,13 +171,18 @@ const descriptors = [
         align-items: center;
         width: 1200px;
         max-width: calc(100% - 2rem);
-        position: relative;
-        margin: auto;
         z-index: 3;
+        position: fixed;
+        left: 50%;
+        top: 0;
+        padding: 10px;
+        background: white;
+        transform: translate(-50%, 0);
     }
 
     .title {
         left: 50%;
+        transform: translate(-75%, 0);
         top: 40vh;
         position: relative;
         animation: returnTitle 1500ms 5000ms;
@@ -196,31 +225,26 @@ const descriptors = [
         opacity: 1;
         animation: fadeOut 300ms 2400ms;
         animation-fill-mode: forwards;
-        color: #828e00;
     }
 
     .descriptor:nth-of-type(2) {
         animation: descriptor-intro 300ms 2500ms, fadeOut 300ms 3000ms;
         animation-fill-mode: forwards;
-        color: #02841e;
     }
 
     .descriptor:nth-of-type(3) {
         animation: descriptor-intro 300ms 3100ms, fadeOut 300ms 3600ms;
         animation-fill-mode: forwards;
-        color: #026a84;
     }
 
     .descriptor:nth-of-type(4) {
         animation: descriptor-intro 300ms 3700ms, fadeOut 300ms 4200ms;
         animation-fill-mode: forwards;
-        color: #026a84;
     }
 
     .descriptor:nth-last-of-type(1) {
         animation: descriptor-intro 300ms 4300ms;
         animation-fill-mode: forwards;
-        color: #730284;
     }
 
     .header.static .title {
@@ -228,6 +252,7 @@ const descriptors = [
         top: 0;
         left: 0;
         font-size: 1.5rem;
+        transform: translate(0, 0);
     }
 
     .header.static .descriptor {
@@ -247,16 +272,70 @@ const descriptors = [
         left: 0;
     }
 
-    .menu {
+    #menutoggle {
+        display: none;
+    }
+
+    .menulist {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: top 300ms, opacity 300ms;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .menulist ul {
+        list-style: none;
+        margin: 0;
+        background: white;
+        padding: 10px 20px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.15);
+        user-select: none;
+    }
+
+    .menulist li {
+        padding: 0.2rem;
+        font-size: 1.5rem;
+    }
+
+    .menulist a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    #menutoggle:checked ~ .menulist {
+        opacity: 1;
+        top: 100%;
+        pointer-events: all;
+        transition: top 100ms, opacity 100ms;
+    }
+
+    .menuicon {
         width: 2rem;
         height: 2rem;
         cursor: pointer;
         opacity: 0;
         animation: fadeIn 300ms 6000ms;
         animation-fill-mode: forwards;
+        transition: transform 300ms;
+        transform: scale(1);
     }
 
-    .header.static .menu {
+    .menuicon:hover {
+        transform: scale(1.1);
+    }
+
+    .menuicon:active {
+        transform: scale(0.9);
+    }
+
+    .header.static .menuicon {
         opacity: 1;
         animation: none;
     }
