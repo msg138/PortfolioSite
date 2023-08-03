@@ -4,8 +4,12 @@ export interface Props {
     shouldAnimate?: boolean;
 }
 
-const { pathPieces, shouldAnimate } = Astro.props;
-const descriptorFocus = pathPieces[0] ?? 'me';
+const { pathPieces, shouldAnimate: shouldAnimateProp } = Astro.props;
+let descriptorFocus = pathPieces[0] ?? 'me';
+const shouldAnimate = shouldAnimateProp || descriptorFocus === 'who?';
+if (descriptorFocus === 'who?') {
+    descriptorFocus = 'me';
+}
 const descriptors = [
     {
         name: 'who?',
@@ -30,8 +34,8 @@ const descriptors = [
 ].sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)];
 ---
 <>
-    <div class="overlay">
-    </div>
+<div class={`overlay${shouldAnimate ? '' : ' static'}`}>
+</div>
 <header class={`header${shouldAnimate ? '' : ' static'}`} id="header">
     <p class="title">
         <a
@@ -133,14 +137,18 @@ const descriptors = [
         animation-fill-mode: forwards;
     }
 
+    .overlay.static {
+        display: none;
+    }
+
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
-        max-width: 1200px;
+        width: 1200px;
+        max-width: calc(100% - 2rem);
         position: relative;
-        margin: 0 0 40px;
+        margin: auto;
         z-index: 3;
     }
 
@@ -152,6 +160,7 @@ const descriptors = [
         animation-fill-mode: forwards;
         display: flex;
         font-size: 4rem;
+        margin: 0;
     }
 
     .title > span {
@@ -216,7 +225,8 @@ const descriptors = [
 
     .header.static .title {
         animation: none;
-        top: 20px;
+        top: 0;
+        left: 0;
         font-size: 1.5rem;
     }
 
@@ -249,10 +259,6 @@ const descriptors = [
     .header.static .menu {
         opacity: 1;
         animation: none;
-    }
-
-    p a::before {
-        display: none;
     }
 </style>
 <script>

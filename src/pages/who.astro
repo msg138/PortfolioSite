@@ -1,25 +1,13 @@
 ---
 import Layout from "../components/Layout.astro";
-import Header from "../components/Header.astro";---
+import PersonalDescription from "../components/PersonalDescription.astro";---
 <Layout
     title="Mikey.is/who?"
+    pathPieces={[
+        'who?'
+    ]}
 >
-    <Header
-            shouldAnimate={true}
-            pathPieces={[
-                'me'
-            ]}
-    />
-    <p>
-        Hey there, I'm a <a href="/a-developer">frontend engineer</a> based in the beautiful city of Seattle. My passion lies in building performant web applications and creating awesome user experiences.
-    </p>
-    <p>
-        You can find some of the projects I have produced on my <a href="https://github.com/msg138">GitHub Profile</a>.
-        When I'm not coding or working on projects, I love spending time with my family—. We enjoy exploring the beautiful surroundings of Seattle together. And when I need some me-time, you can find me playing <a href="/a-gamer">video games</a>, belting out tunes at karaoke nights, savoring delicious sushi, and cheering for UFC and F1 events.
-    </p>
-    <p>
-        Feel free to <a href="/reachable">connect with me</a> on social media or drop me a line if you're ever in Seattle! Let's geek out about frontend and technology together.
-    </p>
+    <PersonalDescription />
 </Layout>
 <style>
 </style>
@@ -27,4 +15,7 @@ import Header from "../components/Header.astro";---
     if (window.location.href[window.location.href.length - 1] !== '?') {
         window.history.pushState(null, null, '/who?')
     }
+    window.setTimeout(() => {
+        window.history.replaceState(null, null, '/me')
+    }, 6500)
 </script>
