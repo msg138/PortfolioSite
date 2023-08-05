@@ -23,6 +23,10 @@ const { post: { frontmatter, Content } } = Astro.props;
 ---
 <Layout
     title={`${frontmatter.title} - Michael George`}
+    pathPieces={[
+        'a-blogger',
+        frontmatter.slug,
+    ]}
 >
     <SEO
         slot="head"
