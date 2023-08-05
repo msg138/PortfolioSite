@@ -12,11 +12,6 @@ if (descriptorFocus === 'who?') {
 }
 const descriptors = [
     {
-        name: 'who?',
-        path: '',
-        color: '#828e00',
-    }, ...[
-    {
         name: 'a-developer',
         path: 'a-developer',
         color: '#185eb9',
@@ -36,7 +31,15 @@ const descriptors = [
         path: 'me',
         color: '#730284',
     },
-].sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)];
+];
+const descriptorAnimateOrder = [
+    {
+        name: 'who?',
+        path: '',
+        color: '#828e00',
+    },
+    ...descriptors.sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)
+];
 ---
 <>
 <div class={`overlay${shouldAnimate ? '' : ' static'}`}>
@@ -50,7 +53,7 @@ const descriptors = [
             mikey.is/
         </a>
         <span class="descriptors">
-            {descriptors.map((descriptor) => (
+            {descriptorAnimateOrder.map((descriptor) => (
                 <span
                         class={`descriptor${descriptor.path === descriptorFocus ? ' active' : ''}`}
                         style={`color: ${descriptor.color}`}
@@ -66,7 +69,7 @@ const descriptors = [
     </label>
     <nav class="menulist">
         <ul>
-            {descriptors.filter((descriptor) => descriptor.path !== '').map((descriptor) => (
+            {descriptors.map((descriptor) => (
                 <li
                         style={`color: ${descriptor.color}`}
                 >

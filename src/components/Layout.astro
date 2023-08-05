@@ -54,7 +54,6 @@ const { title, pathPieces } = Astro.props;
 		font-weight: 500;
 		margin: 0 0 2rem;
 		width: 100%;
-		text-align: center;
 	}
 
 	p {
@@ -71,6 +70,24 @@ const { title, pathPieces } = Astro.props;
 		color: black;
 		position: relative;
 		white-space: nowrap;
+	}
+
+	@keyframes sway {
+		from {
+			transform: rotate(-5deg);
+		}
+
+		to {
+			transform: rotate(5deg);
+		}
+	}
+
+	i {
+		display: inline-block;
+		transform: rotate(-5deg);
+		animation: sway 1000ms;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
 	}
 
 	main p a::before {
