@@ -1,15 +1,10 @@
 ---
 import Layout from '../components/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Section from '../components/Section.astro';
-import Divider from '../components/Divider.astro';
-import Projects from '../projects/index.astro';
-import Skills from '../components/Skills.astro';
 import SEO from '../components/SEO.astro';
 ---
 <Layout
 	title="Michael George - Frontend Engineer"
+	pathPieces={[]}
 >
 	<SEO
 		slot="head"
@@ -18,31 +13,7 @@ import SEO from '../components/SEO.astro';
 			description: 'Seattle, Washington based Frontend Engineer with an eye for performance and accessibility.',
 		}}
 	/>
-	<Header />
-	<Divider title="About Myself" />
-	<Section
-		content={[
-			'I am a Frontend Engineer based in Seattle, Washington. My primary focus is on frontend performance and accessibility. In my free time, you can find me enjoying various styles of music, walking around town or working on a personal project.',
-			'Currently I am employed at Hostwinds, since 2017.',
-		]}
-	/>
-	<Divider
-	    title="Skills"
-	 />
-	 <Section>
-	    <Skills />
-	 </Section>
-	<Divider
-		title="Projects"
-	/>
-	<Projects />
-	<Divider
-		title="Looking For Me?"
-	/>
-	<Section>
-		<p>
-			Email me at <a href="mailto:anything@themichaelgeorge.com" target="_blank">anything@themichaelgeorge.com</a>.
-		</p>
-	</Section>
-	<Footer />
 </Layout>
+<script>
+	window.location = '/who?';
+</script>

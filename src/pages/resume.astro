@@ -1,164 +1,158 @@
 ---
-/**
-    This page does not incorporate components aside from the base Layout, due to the need of being flexible.
-**/
-import Layout from "../components/Layout.astro";
 ---
-<Layout>
-    <Fragment slot="head">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    </Fragment>
-    <section class="resume-section">
-        <h1 class="name-title">
-            <span>
-                Michael
-            </span>
-            <span>
-                George
-            </span>
-        </h1>
-        <p class="content">
-            Seattle, Washington
-            <a href="mailto:anything@themichaelgeorge.com" target="_blank" referrerpolicy="no-referrer">
-                anything@themichaelgeorge.com
-            </a>
-        </p>
-        <p class="content">
-            Inquisitive Front-End Web Developer with a passion for creating performant and beautiful sites. I enjoy continuing to learn and expanding my skills by staying up to date with the latest front-end frameworks and libraries.
-        </p>
-    </section>
-    <section class="resume-section">
-        <h2 class="title">
-            Skills
-            <span>
-                and
-            </span>
-            Qualifications
-        </h2>
-        <ul class="skill-list">
-            <li class="skill-list__item">
-                JavaScript
-            </li>
-            <li class="skill-list__item">
-                TypeScript
-            </li>
-            <li class="skill-list__item">
-                Cross Browser Testing
-            </li>
-            <li class="skill-list__item">
-                Node.js
-            </li>
-            <li class="skill-list__item">
-                Storybook
-            </li>
-            <li class="skill-list__item">
-                Git Version Control
-            </li>
-            <li class="skill-list__item">
-                React
-            </li>
-            <li class="skill-list__item">
-                Technical Writing
-            </li>
-            <li class="skill-list__item">
-                Gitlab CI / CD
-            </li>
-            <li class="skill-list__item">
-                NextJS
-            </li>
-            <li class="skill-list__item">
-                Web Hosting
-            </li>
-            <li class="skill-list__item">
-                Strapi CMS
-            </li>
-        </ul>
-    </section>
-    <section class="resume-section">
-        <h2 class="title">
-            Work History
-        </h2>
-        <table class="table">
-            <thead class="table__head">
-                <th>
-                    Dates Worked
-                </th>
-                <th>
-                    Position and role description
-                </th>
-            </thead>
-            <tbody>
-                <tr class="table__row">
-                    <td class="job-duration">
-                        Sept. 2019 - Present
-                    </td>
-                    <td>
-                        <p class="job-location">
-                            Hostwinds - Tukwila, WA
-                        </p>
-                        <p class="job-position">
-                            Lead Front-End Engineer
-                        </p>
-                        <ul class="job-description">
-                            <li>
-                                Wrote React code that was used in combination with NextJS to statically generate various community pages and the marketing site.
-                            </li>
-                            <li>
-                                Created detailed documentation of systems.
-                            </li>
-                            <li>
-                                Setup various webpack configurations, performing upgrades as
-                                necessary.
-                            </li>
-                            <li>
-                                Wrote a scalable automated CI / CD framework for Google
-                                lighthouse, HTML validation, and cross-browser testing modules through Gitlab CE.
-                            </li>
-                            <li>
-                                Integrated third-party services BrowserStack, Algolia search, and CopyScape plagiarism detection.
-                            </li>
-                            <li>
-                                Implemented an asset processing pipeline to convert and optimize files for use with React.
-                            </li>
-                            <li>
-                                Utilized APIs using JSON REST based interfaces.
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="table__row">
-                    <td class="job-duration">
-                        Nov. 2017 – Sept. 2019
-                    </td>
-                    <td>
-                        <p class="job-location">
-                            Hostwinds - Tukwila, WA
-                        </p>
-                        <p class="job-position">
-                            Front Line Tech Support
-                        </p>
-                        <ul class="job-description">
-                            <li>
-                                Provided tech support for DNS and web server-related issues via Live Chat and phone support.
-                            </li>
-                            <li>
-                                Used SSH and RDP for remote access in Linux and Windows servers.
-                            </li>
-                            <li>
-                                Assisted with backups and restorations for online servers.
-                            </li>
-                            <li>
-                                Wrote weekly client-facing Knowledge Base Guides.
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-</Layout>
+<Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</Fragment>
+<section class="resume-section">
+    <h1 class="name-title">
+        <span>
+            Michael
+        </span>
+        <span>
+            George
+        </span>
+    </h1>
+    <p class="content">
+        Seattle, Washington
+        <a href="mailto:anything@themichaelgeorge.com" target="_blank" referrerpolicy="no-referrer">
+            anything@themichaelgeorge.com
+        </a>
+    </p>
+    <p class="content">
+        Inquisitive Front-End Web Developer with a passion for creating performant and beautiful sites. I enjoy continuing to learn and expanding my skills by staying up to date with the latest front-end frameworks and libraries.
+    </p>
+</section>
+<section class="resume-section">
+    <h2 class="title">
+        Skills
+        <span>
+            and
+        </span>
+        Qualifications
+    </h2>
+    <ul class="skill-list">
+        <li class="skill-list__item">
+            JavaScript
+        </li>
+        <li class="skill-list__item">
+            TypeScript
+        </li>
+        <li class="skill-list__item">
+            Cross Browser Testing
+        </li>
+        <li class="skill-list__item">
+            Node.js
+        </li>
+        <li class="skill-list__item">
+            Storybook
+        </li>
+        <li class="skill-list__item">
+            Git Version Control
+        </li>
+        <li class="skill-list__item">
+            React
+        </li>
+        <li class="skill-list__item">
+            Technical Writing
+        </li>
+        <li class="skill-list__item">
+            Gitlab CI / CD
+        </li>
+        <li class="skill-list__item">
+            NextJS
+        </li>
+        <li class="skill-list__item">
+            Web Hosting
+        </li>
+        <li class="skill-list__item">
+            Strapi CMS
+        </li>
+    </ul>
+</section>
+<section class="resume-section">
+    <h2 class="title">
+        Work History
+    </h2>
+    <table class="table">
+        <thead class="table__head">
+            <th>
+                Dates Worked
+            </th>
+            <th>
+                Position and role description
+            </th>
+        </thead>
+        <tbody>
+            <tr class="table__row">
+                <td class="job-duration">
+                    Sept. 2019 - Present
+                </td>
+                <td>
+                    <p class="job-location">
+                        Hostwinds - Tukwila, WA
+                    </p>
+                    <p class="job-position">
+                        Lead Front-End Engineer
+                    </p>
+                    <ul class="job-description">
+                        <li>
+                            Wrote React code that was used in combination with NextJS to statically generate various community pages and the marketing site.
+                        </li>
+                        <li>
+                            Created detailed documentation of systems.
+                        </li>
+                        <li>
+                            Setup various webpack configurations, performing upgrades as
+                            necessary.
+                        </li>
+                        <li>
+                            Wrote a scalable automated CI / CD framework for Google
+                            lighthouse, HTML validation, and cross-browser testing modules through Gitlab CE.
+                        </li>
+                        <li>
+                            Integrated third-party services BrowserStack, Algolia search, and CopyScape plagiarism detection.
+                        </li>
+                        <li>
+                            Implemented an asset processing pipeline to convert and optimize files for use with React.
+                        </li>
+                        <li>
+                            Utilized APIs using JSON REST based interfaces.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="table__row">
+                <td class="job-duration">
+                    Nov. 2017 – Sept. 2019
+                </td>
+                <td>
+                    <p class="job-location">
+                        Hostwinds - Tukwila, WA
+                    </p>
+                    <p class="job-position">
+                        Front Line Tech Support
+                    </p>
+                    <ul class="job-description">
+                        <li>
+                            Provided tech support for DNS and web server-related issues via Live Chat and phone support.
+                        </li>
+                        <li>
+                            Used SSH and RDP for remote access in Linux and Windows servers.
+                        </li>
+                        <li>
+                            Assisted with backups and restorations for online servers.
+                        </li>
+                        <li>
+                            Wrote weekly client-facing Knowledge Base Guides.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 <style>
     .resume-section {
         font-family: 'Work Sans', 'sans-serif';

@@ -1,0 +1,22 @@
+---
+import Layout from "../components/Layout.astro";
+import PersonalDescription from "../components/PersonalDescription.astro";---
+<Layout
+    title="Mikey.is/who?"
+    pathPieces={[
+        'who?'
+    ]}
+>
+    <PersonalDescription />
+</Layout>
+<style>
+</style>
+<script>
+    if (window.location.href[window.location.href.length - 1] !== '?') {
+        window.history.pushState(null, null, '/who?')
+    }
+    window.setTimeout(() => {
+        window.history.replaceState(null, null, '/me')
+        window.document.title = 'Mikey.is/me';
+    }, 6500)
+</script>

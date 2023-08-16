@@ -1,201 +1,465 @@
 ---
-import meImage from '../assets/images/me.svg';
-const { noTitleElement } = Astro.props;
----
+export interface Props {
+    pathPieces: Array<string>;
+    shouldAnimate?: boolean;
+}
 
-<div class="header" id="header">
-    <a
-        class="header__img"
-        href="#top"
-    >
-        <img
-            src={meImage}
-            alt="Artistic rendition of myself."
-        />
-    </a>
-    {noTitleElement ? (
-        <p class="header__label">
-            <span class="header__label__name">
-                Michael George
-            </span>
-            <span class="header__label__position">
-                Frontend Engineer
-            </span>
-        </p>
-    ) : (
-        <h1 class="header__label">
-            <span class="header__label__name">
-                Michael George
-            </span>
-            <span class="header__label__position">
-                Frontend Engineer
-            </span>
-        </h1>
-    )}
+const { pathPieces, shouldAnimate: shouldAnimateProp } = Astro.props;
+let descriptorFocus = pathPieces[0] ?? 'me';
+const shouldAnimate = shouldAnimateProp || descriptorFocus === 'who?';
+if (descriptorFocus === 'who?') {
+    descriptorFocus = 'me';
+}
+const descriptors = [
+    {
+        name: 'a-developer',
+        path: 'a-developer',
+        color: '#185eb9',
+    },
+    {
+        name: 'a-gamer',
+        path: 'a-gamer',
+        color: '#8f0030',
+    },
+    {
+        name: 'me',
+        path: 'me',
+        color: '#730284',
+    },
+];
+const descriptorAnimateOrder = [
+    {
+        name: 'who?',
+        path: '',
+        color: '#828e00',
+    },
+    {
+        name: 'a-thinker',
+        path: '',
+        color: '#02841e',
+    },
+    ...descriptors.sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)
+];
+---
+<>
+<div class={`overlay${shouldAnimate ? '' : ' static'}`}>
 </div>
+<header class={`header${shouldAnimate ? '' : ' static'}`} id="header">
+    <p class="title">
+        <a
+                class="main"
+                href="/"
+        >
+            mikey.is/
+        </a>
+        <span class="descriptors">
+            {descriptorAnimateOrder.map((descriptor) => (
+                <span
+                        class={`descriptor${descriptor.path === descriptorFocus ? ' active' : ''}`}
+                        style={`color: ${descriptor.color}`}
+                >
+                    {descriptor.name}
+                </span>
+            ))}
+        </span>
+    </p>
+    <input type="checkbox" id="menutoggle">
+    <label for="menutoggle">
+        <svg aria-label="Toggle menu links" class="menuicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Menu</title><path fill-rule="evenodd" d="M4 8c-.55 0-1-.45-1-1s.45-1 1-1h16c.55 0 1 .45 1 1s-.45 1-1 1H4Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Z"></path><metadata>app, application, components, hamburger, interface, line, lines, menu, screen, site, ui, ux, web, website</metadata></svg>
+        <span class="menu-cancel-overlay">
+        </span>
+    </label>
+    <nav class="menulist">
+        <ul>
+            {descriptors.map((descriptor) => (
+                <li
+                        style={`color: ${descriptor.color}`}
+                >
+                    <a href={`/${descriptor.path}`}>{descriptor.name}</a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+</header>
+</>
 <style>
+    @keyframes returnTitle {
+        0% {
+            top: 40vh;
+            left: 50%;
+            transform: translate(-75%, 0);
+            font-size: 4rem;
+        }
+
+        100% {
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            font-size: 1.5rem;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            top: 0;
+        }
+
+        100% {
+            opacity: 0;
+            top: -20px;
+        }
+    }
+
+    @keyframes introduction {
+        0% {
+            left: -200px;
+        }
+
+        100% {
+            left: 0;
+        }
+    }
+
+    @keyframes descriptor-intro {
+        0% {
+            opacity: 0;
+            top: 100%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 0;
+        }
+    }
+
+    @keyframes overlayFade {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .overlay {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: block;
+        background: white;
+        opacity: 1;
+        z-index: 2;
+        pointer-events: all;
+        animation: overlayFade 500ms 6200ms;
+        animation-fill-mode: forwards;
+    }
+
+    .overlay.static {
+        display: none;
+    }
+
     .header {
         display: flex;
-        justify-content: center;
-        align-items: center;;
-        width: 100%;
-        position: relative;
-        margin: 0 0 40px;
-    }
-
-    .header--sticky {
-        position: fixed;
-        top: 0;
-        margin: auto;
-        z-index: 4;
-        transition: top 300ms;
-        width: 1200px;
-    }
-
-    .header--sticky .header__img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .header::after {
-        content: '';
-        width: 100%;
-        height: 4px;
-        background: black;
-        position: absolute;
-        top: calc(50% - 2px);
-        left: 0;
-        border-radius: 2px;
-    }
-
-    .header__img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 7px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #A31449;
-        z-index: 2;
-        transition: width 300ms, height 300ms;
-    }
-
-    .header__img img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .header__label {
-        position: absolute;
-        margin: 0;
-        display: flex;
         justify-content: space-between;
-        width: 100%;
-        top: 50%;
-        left: 0;
-        font-size: 2rem;
-        clip-path: polygon(0 -100%, 50% -100%, 50% 100%, 100% 100%, 100% 0, 0 0);
+        align-items: center;
+        width: 1200px;
+        max-width: calc(100% - 2rem);
+        z-index: 3;
+        position: fixed;
+        left: 50%;
+        top: 0;
+        padding: 10px;
+        background: white;
+        transform: translate(-50%, 0);
     }
 
-    .header__label__name, .header__label__position {
+    .title {
+        left: 50%;
+        transform: translate(-75%, 0);
+        top: 40vh;
         position: relative;
-        transition: top 300ms;
-        transition-delay: 400ms;
+        animation: returnTitle 1500ms 5000ms;
+        animation-fill-mode: forwards;
+        display: flex;
+        font-size: 4rem;
+        margin: 0;
+    }
+
+    .title > span {
+        background: white;
+    }
+
+    @keyframes mainBackgroundRemover {
+        0% {
+            background: white;
+        }
+
+        100% {
+            background: rgba(1, 1, 1, 0);
+        }
+    }
+
+    .main {
+        position: relative;
+        background: white;
+        z-index: 3;
+        color: black;
+        text-decoration: none;
+        animation: mainBackgroundRemover 300ms 2000ms;
+        animation-fill-mode: forwards;
+    }
+
+    .descriptors {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: -200px;
         top: 0;
+        white-space: nowrap;
+        animation: introduction 1000ms 1000ms;
+        animation-fill-mode: forwards;
     }
 
-    .header__label__name {
-        top: -2.5rem;
+    .descriptor {
+        opacity: 0;
+        position: absolute;
     }
 
-    .header--sticky .header__label__name {
+    .descriptor:nth-of-type(1) {
+        opacity: 1;
+        animation: fadeOut 300ms 2400ms;
+        animation-fill-mode: forwards;
+    }
+
+    .descriptor:nth-of-type(2) {
+        animation: descriptor-intro 300ms 2500ms, fadeOut 300ms 3000ms;
+        animation-fill-mode: forwards;
+    }
+
+    .descriptor:nth-of-type(3) {
+        animation: descriptor-intro 300ms 3100ms, fadeOut 300ms 3600ms;
+        animation-fill-mode: forwards;
+    }
+
+    .descriptor:nth-of-type(4) {
+        animation: descriptor-intro 300ms 3700ms, fadeOut 300ms 4200ms;
+        animation-fill-mode: forwards;
+    }
+
+    .descriptor:nth-last-of-type(1) {
+        animation: descriptor-intro 300ms 4300ms;
+        animation-fill-mode: forwards;
+    }
+
+    .header.static .title {
+        animation: none;
         top: 0;
+        left: 0;
+        font-size: 1.5rem;
+        transform: translate(0, 0);
     }
 
-    .header--sticky .header__label__position {
-        top: -2.5rem;
+    .header.static .descriptor {
+        animation: none;
     }
 
-    @media (max-width: 1200px) {
-        .header--sticky {
-            width: 900px;
-        }
+    .header.static .descriptor:nth-of-type(1) {
+        opacity: 0;
     }
 
-    @media (max-width: 900px) {
-        .header__img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .header__label {
-            font-size: 1.2rem;
-        }
-
-        .header__label__name {
-            top: -1.7rem;
-        }
+    .header.static .descriptor.active {
+        opacity: 1;
     }
 
-    @media (max-width: 900px) {
-        .header--sticky {
-            width: 600px;
+    .header.static .descriptors {
+        animation: none;
+        left: 0;
+    }
+
+    #menutoggle {
+        display: none;
+    }
+
+    .menulist {
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: top 300ms, opacity 300ms;
+        display: flex;
+        justify-content: flex-end;
+        z-index: 3;
+    }
+
+    .menulist ul {
+        list-style: none;
+        margin: 0;
+        background: white;
+        padding: 10px 20px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.15);
+        user-select: none;
+    }
+
+    .menulist li {
+        padding: 0.2rem;
+        font-size: 1.5rem;
+    }
+
+    .menulist a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .menu-cancel-overlay {
+        display: none;
+        opacity: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #menutoggle:checked ~ .menulist {
+        opacity: 1;
+        top: 100%;
+        pointer-events: all;
+        transition: top 100ms, opacity 100ms;
+    }
+
+    #menutoggle:checked ~ label .menu-cancel-overlay {
+        display: block;
+        z-index: 2;
+    }
+
+    .menuicon {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        opacity: 0;
+        animation: fadeIn 300ms 6000ms;
+        animation-fill-mode: forwards;
+        transition: transform 300ms;
+        transform: scale(1);
+    }
+
+    .menuicon:hover {
+        transform: scale(1.1);
+    }
+
+    .menuicon:active {
+        transform: scale(0.9);
+    }
+
+    .header.static .menuicon {
+        opacity: 1;
+        animation: none;
+    }
+
+    @media (max-width: 1000px) {
+        @keyframes introductionMobile {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 50px;
+            }
+        }
+
+        @keyframes introductionReturn {
+            0% {
+                left: -125px;
+                top: 50px;
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+            }
+        }
+
+        @keyframes returnTitleMobile {
+            0% {
+                top: 40vh;
+                left: 50%;
+                transform: translate(-75%, 0);
+                font-size: 2.5rem;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+                transform: translate(0, 0);
+                font-size: 1.5rem;
+            }
+        }
+
+        .title {
+            font-size: 2.5rem;
+            animation: returnTitleMobile 1500ms 5000ms;
+            animation-fill-mode: forwards;
+        }
+
+        .header.static .title {
+            font-size: 1.5rem;
+        }
+
+        .header:not(.static) .descriptors {
+            left: -125px;
+            animation: introductionMobile 1000ms 1000ms, introductionReturn 1000ms 5000ms;
+            animation-fill-mode: forwards;
         }
     }
 </style>
 <script>
-    const headerMargin = 40;
-    let lastKnownScrollPosition = 0;
-    let ticking = false;
-    let headerHeight = 0;
-    let isHeaderFixed = false;
-
-    function handleHeaderLock(scrollPos) {
-        if (isHeaderFixed && scrollPos < headerHeight / 2) {
-            const headerElement = document.getElementById('header');
-            if (headerElement) {
-                headerElement.className = headerElement.className.replace(/ ?header--sticky/, '');
-                headerElement.style.minHeight = `${headerHeight}px`;
-                document.body.removeChild(document.getElementById('header-placeholder'));
-                isHeaderFixed = false;
+    const visitedStorageKey = 'hasBeenHere';
+    function getLastTimeVisited() {
+        const lastBeenHere = window.localStorage.getItem(visitedStorageKey) as number | null;
+        try {
+            if (!lastBeenHere) {
+                return null;
             }
-        } else if (!isHeaderFixed) {
-            const headerElement = document.getElementById('header');
-            if (headerElement) {
-                const computedHeight = headerElement.getBoundingClientRect().height;
-                headerHeight = computedHeight;
-                if (scrollPos > headerHeight) {
-                    isHeaderFixed = true;
-                    headerElement.style.top = `-${computedHeight + 20}px`;
-                    headerElement.style.minHeight = null;
-                    headerElement.className = `${headerElement.className} header--sticky`;
-                    const placeholderElement = document.createElement('div');
-                    placeholderElement.style.height = `${computedHeight + headerMargin}px`;
-                    placeholderElement.style.margin = headerElement.style.margin;
-                    placeholderElement.id = 'header-placeholder';
-                    document.body.prepend(placeholderElement);
-                    setTimeout(() => {
-                        headerElement.style.top = null;
-                    }, 100);
-                }
+            const lastBeenHereNumber = Number(lastBeenHere);
+            if (Number.isNaN(lastBeenHereNumber)) {
+                return null;
             }
+            return lastBeenHereNumber;
+        } catch (_) {
+            return null;
         }
     }
 
-    document.addEventListener("scroll", () => {
-        lastKnownScrollPosition = window.scrollY;
+    function setLastTimeVisitedToNow() {
+        window.localStorage.setItem(visitedStorageKey, String(Date.now()));
+    }
 
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleHeaderLock(lastKnownScrollPosition);
-                ticking = false;
+    function animateIfNew() {
+        const lastTimeHere = getLastTimeVisited();
+        if (!lastTimeHere) {
+            setLastTimeVisitedToNow();
+            const staticElements = Array.from(document.querySelectorAll('.static'));
+            staticElements.forEach((staticElement) => {
+                staticElement.classList.remove('static');
             });
-
-            ticking = true;
         }
-    });
-
-    // Perform initial check, in case user starts lower in page
-    handleHeaderLock(window.scrollY);
+    }
+    animateIfNew();
 </script>

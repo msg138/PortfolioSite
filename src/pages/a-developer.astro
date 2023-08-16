@@ -1,0 +1,80 @@
+---
+import Layout from "../components/Layout.astro";
+---
+<Layout
+        title="Mikey.is/a-developer"
+        pathPieces={[
+            'a-developer'
+        ]}
+>
+    <h1>I Love to Create Software!</h1>
+    <p>
+        Since a young age I have been passionate about creating software. Following my experience in the field I have taken an affinity to focusing on performant and scalable code patterns.
+    </p>
+    <h2>Skills and Technologies</h2>
+    <ul>
+        <li class="proficient">
+            JavaScript
+        </li>
+        <li class="proficient">
+            TypeScript
+        </li>
+        <li class="proficient">
+            React / Preact
+        </li>
+        <li class="proficient">
+            NextJS
+        </li>
+        <li class="proficient">
+            Webpack
+        </li>
+        <li class="semiproficient">
+            Babel
+        </li>
+    </ul>
+    <p>
+        I like to use <a class="proficient" href="https://www.jetbrains.com/webstorm/" target="_blank">JetBrains Webstorm</a> with the <a href="https://plugins.jetbrains.com/plugin/164-ideavim" referrerpolicy="no-referrer" target="_blank" class="semiproficient">IdeaVim plugin</a>.
+    </p>
+    <h2>Projects</h2>
+    <h3>Hostwinds - Marketing Site - 2019</h3>
+    <p>
+        <a href="https://www.hostwinds.com/" target="_blank" referrerpolicy="no-referrer">Preview Here</a>
+    </p>
+    <p>
+        At Hostwinds, I have implemented the full marketing site using NextJS with React. I implemented a CI / CD testing pipeline that uses various tools including Lighthouse, Webhint, and Browserstack (using WebDriver.io) to detect cross browser issues and performance issues through GitLab.
+    </p>
+    <p>
+        Feel free to <a href="mailto:anything@themichaelgeorge.com">ask me more</a> about how I made the site and the work I performed.
+    </p>
+    <h3>Hostwinds Current Project - ?</h3>
+    <p>
+        Currently I am working on a full React project that is aimed to replace the current WHMCS system that is used at Hostwinds. This project is aimed to make the customer experience more stream lined and custom-tailored for Hostwinds.
+    </p>
+</Layout>
+<style>
+    ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    ul li {
+        min-width: 25%;
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    .proficient {
+        color: #3D631C;
+    }
+
+    .semiproficient {
+        color: #6C6400;
+    }
+
+    .used {
+        color: #963800;
+    }
+</style>
+<script>
+</script>

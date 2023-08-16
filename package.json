@@ -2,11 +2,11 @@
   "name": "portfolio-site",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev --host 0.0.0.0",
-    "build": "yarn run build:site && yarn run build:resume",
+    "build": "yarn run build:site",
     "build:site": "astro build",
     "build:resume": "node ./src/utility/build-tools/generateResumePDF.js",
     "preview": "astro preview --port 9098",
