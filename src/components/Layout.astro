@@ -56,6 +56,13 @@ const { title, pathPieces } = Astro.props;
 		width: 100%;
 	}
 
+	h3 {
+		font-size: 1.5rem;
+		font-weight: 500;
+		margin: 0 0 1.5rem;
+		width: 100%;
+	}
+
 	p {
 		font-size: 1.5rem;
 		font-weight: 400;
@@ -99,7 +106,7 @@ const { title, pathPieces } = Astro.props;
 		bottom: 0.3rem;
 		left: 0;
 		height: 0.4rem;
-		transition: height 300ms;
+		transition: height 150ms;
 		z-index: -1;
 	}
 
@@ -110,8 +117,6 @@ const { title, pathPieces } = Astro.props;
 	a:hover {
 		color: black;
 	}
-
-
 
 	@media (max-width: 1200px) {
 		main {

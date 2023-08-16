@@ -17,11 +17,6 @@ const descriptors = [
         color: '#185eb9',
     },
     {
-        name: 'a-blogger',
-        path: 'a-blogger',
-        color: '#02841e',
-    },
-    {
         name: 'a-gamer',
         path: 'a-gamer',
         color: '#8f0030',
@@ -37,6 +32,11 @@ const descriptorAnimateOrder = [
         name: 'who?',
         path: '',
         color: '#828e00',
+    },
+    {
+        name: 'a-thinker',
+        path: '',
+        color: '#02841e',
     },
     ...descriptors.sort(({ path }) => (path === '' || path === descriptorFocus) ? 1 : -1)
 ];
@@ -66,6 +66,8 @@ const descriptorAnimateOrder = [
     <input type="checkbox" id="menutoggle">
     <label for="menutoggle">
         <svg aria-label="Toggle menu links" class="menuicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Menu</title><path fill-rule="evenodd" d="M4 8c-.55 0-1-.45-1-1s.45-1 1-1h16c.55 0 1 .45 1 1s-.45 1-1 1H4Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Zm0 5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1Z"></path><metadata>app, application, components, hamburger, interface, line, lines, menu, screen, site, ui, ux, web, website</metadata></svg>
+        <span class="menu-cancel-overlay">
+        </span>
     </label>
     <nav class="menulist">
         <ul>
@@ -294,14 +296,14 @@ const descriptorAnimateOrder = [
 
     .menulist {
         position: absolute;
-        left: 0;
+        right: 0;
         top: 0;
-        width: 100%;
         opacity: 0;
         pointer-events: none;
         transition: top 300ms, opacity 300ms;
         display: flex;
         justify-content: flex-end;
+        z-index: 3;
     }
 
     .menulist ul {
@@ -325,11 +327,26 @@ const descriptorAnimateOrder = [
         color: inherit;
     }
 
+    .menu-cancel-overlay {
+        display: none;
+        opacity: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
     #menutoggle:checked ~ .menulist {
         opacity: 1;
         top: 100%;
         pointer-events: all;
         transition: top 100ms, opacity 100ms;
+    }
+
+    #menutoggle:checked ~ label .menu-cancel-overlay {
+        display: block;
+        z-index: 2;
     }
 
     .menuicon {
