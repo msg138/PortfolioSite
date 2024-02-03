@@ -7,73 +7,167 @@ import Layout from "../components/Layout.astro";
             'a-developer'
         ]}
 >
-    <h1>I Love to Create Software!</h1>
+    <h1>A Developer</h1>
     <p>
         Since a young age I have been passionate about creating software. Following my experience in the field I have taken an affinity to focusing on performant and scalable code patterns.
     </p>
     <h2>Skills and Technologies</h2>
-    <ul>
-        <li class="proficient">
-            JavaScript
-        </li>
-        <li class="proficient">
-            TypeScript
-        </li>
-        <li class="proficient">
-            React / Preact
-        </li>
-        <li class="proficient">
-            NextJS
-        </li>
-        <li class="proficient">
-            Webpack
+    <ul class="legend">
+        <li class="used">
+            Used Recreationally
         </li>
         <li class="semiproficient">
-            Babel
+            Used Lightly in Production
+        </li>
+        <li class="proficient">
+            Used Heavily in Production
         </li>
     </ul>
-    <p>
-        I like to use <a class="proficient" href="https://www.jetbrains.com/webstorm/" target="_blank">JetBrains Webstorm</a> with the <a href="https://plugins.jetbrains.com/plugin/164-ideavim" referrerpolicy="no-referrer" target="_blank" class="semiproficient">IdeaVim plugin</a>.
-    </p>
+    <ul class="categories">
+        <li>
+            Languages
+            <ul class="skills">
+                <li class="proficient">
+                    JavaScript
+                </li>
+                <li class="proficient">
+                    TypeScript
+                </li>
+                <li class="proficient">
+                    CSS
+                </li>
+                <li class="proficient">
+                    HTML
+                </li>
+            </ul>
+        </li>
+        <li>
+            Frameworks / Libraries
+            <ul class="skills">
+                <li class="proficient">
+                    React
+                </li>
+                <li class="proficient">
+                    Preact
+                </li>
+                <li class="proficient">
+                    NextJs
+                </li>
+                <li class="proficient">
+                    Strapi
+                </li>
+            </ul>
+        </li>
+        <li>
+            APIs
+            <ul class="skills">
+                <li class="semiproficient">
+                    BrowserStack / Percy
+                </li>
+                <li class="semiproficient">
+                    Fixer.io
+                </li>
+            </ul>
+        </li>
+        <li>
+            Tools
+            <ul class="skills">
+                <li class="proficient">
+                    WebStorm
+                </li>
+            </ul>
+        </li>
+    </ul>
     <h2>Projects</h2>
     <h3>Hostwinds - Marketing Site - 2019</h3>
     <p>
         <a href="https://www.hostwinds.com/" target="_blank" referrerpolicy="no-referrer">Preview Here</a>
     </p>
-    <p>
+    <p class="sub">
         At Hostwinds, I have implemented the full marketing site using NextJS with React. I implemented a CI / CD testing pipeline that uses various tools including Lighthouse, Webhint, and Browserstack (using WebDriver.io) to detect cross browser issues and performance issues through GitLab.
     </p>
-    <p>
+    <p class="sub">
         Feel free to <a href="mailto:anything@themichaelgeorge.com">ask me more</a> about how I made the site and the work I performed.
     </p>
-    <h3>Hostwinds Current Project - ?</h3>
-    <p>
+    <h3>Hostwinds Current Project - WIP</h3>
+    <p class="sub">
         Currently I am working on a full React project that is aimed to replace the current WHMCS system that is used at Hostwinds. This project is aimed to make the customer experience more stream lined and custom-tailored for Hostwinds.
     </p>
 </Layout>
 <style>
-    ul {
+    .categories {
         list-style: none;
         display: flex;
         flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
     }
 
-    ul li {
+    .categories li {
+        padding: 0;
+        margin: 0 40px 40px 0;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+    }
+
+    .skills {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+
+    .legend {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0 0 40px;
+    }
+
+    .legend li {
+        min-width: 33%;
+        padding: 10px;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .skills li {
         min-width: 25%;
         padding: 10px;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
-    .proficient {
-        color: #3D631C;
+    .skills li::before, .legend li::before {
+        width: 10px;
+        height: 10px;
+        content: '';
+        margin-right: 5px;
+        display: block;
     }
 
-    .semiproficient {
-        color: #6C6400;
+    .proficient::before {
+        background-color: #71ef02;
     }
 
-    .used {
-        color: #963800;
+    .semiproficient::before {
+        background-color: #e7ef02;
+    }
+
+    .used::before {
+        background-color: #ef8002;
+    }
+
+    .sub {
+        font-size: 1rem;
     }
 </style>
 <script>
